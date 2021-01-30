@@ -7,9 +7,10 @@ import { loadDetail } from "../actions/detailActions";
 import { Link } from "react-router-dom";
 
 const Game = ({ name, released, image, id }) => {
-  //Load Details
+  //Load Detail Handler
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
+    document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
 
