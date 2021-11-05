@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 
 const theme = {
   colour: {
-    primary: "#3D315B",
+    primary: "#7e63c4",
     secondary: "#444B6E",
     background: "#708B75",
     link: "#9AB87A",
@@ -14,6 +14,7 @@ const theme = {
       medium: "18px",
       large: "20px",
       extraLarge: "24px",
+      special: "300px",
     },
     family: "sans-serif",
   },

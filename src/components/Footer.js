@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 //Media
 
@@ -15,9 +15,9 @@ const Footer = () => {
 export default Footer;
 
 const SFooter = styled(motion.div)`
-  ${({ theme }) => css`
+  ${({ theme }) => `
     color: ${theme.colour.primary};
     font-family: ${theme.font.family};
-    font-size: ${theme.font.size.medium};
+    font-size: ${theme.font.size.special};
   `}
 `;
