@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { flex } from "../util";
 
 const Nav = () => {
   return (
@@ -23,5 +24,18 @@ const Nav = () => {
 export default Nav;
 
 const SNav = styled(motion.nav)`
+  ${flex}
+  padding: 2rem;
+  .nav-links {
+    ul {
+      ${flex}
+      list-style: none;
+    }
+
+    li {
+      padding: 0 1rem;
+    }
+  }
+
   width: 100%;
 `;

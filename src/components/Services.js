@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-
+import { maxWidth, flex } from "../util";
 //Media
 import stock1 from "../img/stock1.png";
 
 const Services = () => {
   return (
     <SServices>
-      <div>
+      <div className="approach">
         <h2>My Approach</h2>
         <p>
           Beautiful design is no accident. Lorem ipsum dolor sit amet,
@@ -30,31 +30,31 @@ const Services = () => {
           </p>
           <div className="link">See Past Projects</div>
         </div>
-        <div className="design-service">
-          <h2>Design a unique logo for your unique business</h2>
-          <div className="design-service-info">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
-              sapien, elit, turpis ac scelerisque nibh vulputate risus. At quam
-              purus lorem mauris consectetur.
-            </p>
-            <div className="link">See Past Projects</div>
-          </div>
+      </div>
+      <div className="design-service" align>
+        <h2>Design a unique logo for your unique business</h2>
+        <div className="design-service-info">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
+            sapien, elit, turpis ac scelerisque nibh vulputate risus. At quam
+            purus lorem mauris consectetur.
+          </p>
+          <div className="link">See Past Projects</div>
         </div>
-        <div className="art-service">
-          <div>
-            <h2>Commission a beautiful, one of a kind piece of art</h2>
-            <p>
-              Physical or digital, I can create that one of a kind piece you
-              have been dreaming of.
-            </p>
-            <div className="link">See Past Projects</div>
-          </div>
-          <div className="art-images">
-            <img src={stock1} alt="" />
-            <img src={stock1} alt="" />
-            <img src={stock1} alt="" />
-          </div>
+      </div>
+      <div className="art-service">
+        <div>
+          <h2>Commission a beautiful, one of a kind piece of art</h2>
+          <p>
+            Physical or digital, I can create that one of a kind piece you have
+            been dreaming of.
+          </p>
+          <div className="link">See Past Projects</div>
+        </div>
+        <div className="art-images">
+          <img src={stock1} alt="" />
+          <img src={stock1} alt="" />
+          <img src={stock1} alt="" />
         </div>
       </div>
     </SServices>
@@ -64,5 +64,28 @@ const Services = () => {
 export default Services;
 
 const SServices = styled(motion.div)`
-  width: 100%;
+  ${maxWidth}
+  margin: 0 auto;
+
+  .approach {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20vh;
+
+    p {
+      width: 50%;
+    }
+  }
+  .web-service,
+  .design-service,
+  .art-service {
+    ${flex}
+    padding-bottom: 20vh;
+  }
+
+  .art-images {
+    img {
+      max-height: 30vh;
+    }
+  }
 `;

@@ -1,10 +1,11 @@
 import { ThemeProvider } from "styled-components";
 
 const theme = {
-  colour: {
-    primary: "#7e63c4",
-    secondary: "#444B6E",
-    background: "#708B75",
+  color: {
+    primary: "#f2f2f2",
+    secondary: "#E48383E5",
+    tertiary: "#7ED1EB",
+    background: "#131313",
     link: "#9AB87A",
   },
   font: {
@@ -16,7 +17,7 @@ const theme = {
       extraLarge: "24px",
       special: "300px",
     },
-    family: "sans-serif",
+    family: `font-family: 'Lora', serif;`,
   },
   breakpoint: {
     mobile: "375px",

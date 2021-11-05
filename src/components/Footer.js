@@ -1,13 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
+import { flex, flex2 } from "../util";
 //Media
 
 const Footer = () => {
   return (
-    <SFooter>
-      <h3>&copy</h3>
+    <SFooter align="center" direction="column" justify="center">
+      <p>&#169; Austin Waldsmith. All rights reserved.</p>
+      <p>austin.waldsmith@gmail.com</p>
+      <div className="social-media-icons"></div>
     </SFooter>
   );
 };
@@ -15,9 +17,20 @@ const Footer = () => {
 export default Footer;
 
 const SFooter = styled(motion.div)`
-  ${({ theme }) => `
-    color: ${theme.colour.primary};
+  ${({ theme }) => css`
     font-family: ${theme.font.family};
-    font-size: ${theme.font.size.special};
+    ${flex}
+
+    min-height: 20vh;
+    background: ${theme.color.secondary};
+    color: ${theme.color.background};
+    .social-media-icons {
+      height: 50px;
+      width: 300px;
+      background: gray;
+    }
   `}
+  > * {
+    padding: 0.5rem;
+  }
 `;

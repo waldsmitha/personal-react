@@ -19,12 +19,15 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+      font-family: "Lora", serif;
     width: 100%;
+    background: #131313;
+    color: #f2f2f2;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 4.8rem;
     font-family: 'Abril Fatface', cursive;
     font-weight: lighter
 }
@@ -34,8 +37,8 @@ h3 {
     padding: 1.5rem 0 ;
 }
 p {
-    font-size: 1.2rem;
-    line-height: 200%;
+    font-size: 1.6rem;
+    line-height: 140%;
 }
 a {
     text-decoration: none;
