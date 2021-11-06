@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { maxWidth, flex } from "../util";
+import { maxWidth } from "../util";
 //Media
 import stock1 from "../img/stock1.png";
 
 const Services = () => {
   return (
     <SServices>
-      <div className="approach">
+      <div id="services" className="approach">
         <h2>My Approach</h2>
         <p>
           Beautiful design is no accident. Lorem ipsum dolor sit amet,
@@ -43,13 +43,13 @@ const Services = () => {
         </div>
       </div>
       <div className="art-service">
-        <div>
+        <div className="art-info">
           <h2>Commission a beautiful, one of a kind piece of art</h2>
           <p>
             Physical or digital, I can create that one of a kind piece you have
             been dreaming of.
           </p>
-          <div className="link">See Past Projects</div>
+          <a href="#portfolio">See Past Projects</a>
         </div>
         <div className="art-images">
           <img src={stock1} alt="" />
@@ -79,13 +79,32 @@ const SServices = styled(motion.div)`
   .web-service,
   .design-service,
   .art-service {
-    ${flex}
+    display: flex;
     padding-bottom: 20vh;
   }
 
-  .art-images {
-    img {
-      max-height: 30vh;
+  .art-service {
+    display: flex;
+    padding-bottom: 20vh;
+    .art-info {
+      display: flex;
+      flex-direction: column;
+      a {
+        margin-top: 5rem;
+      }
+      h2 {
+        margin-bottom: 5rem;
+      }
+    }
+    .art-images {
+      display: flex;
+      padding-left: 2rem;
+      align-items: flex-end;
+      img {
+        object-fit: cover;
+        height: 50%;
+        width: 350px;
+      }
     }
   }
 `;

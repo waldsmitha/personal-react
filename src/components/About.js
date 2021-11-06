@@ -8,7 +8,7 @@ import stock1 from "../img/stock1.png";
 
 const About = () => {
   return (
-    <SAbout>
+    <SAbout id="about">
       <header>
         <h1>I don't do this for the money.</h1>
       </header>
@@ -78,7 +78,7 @@ const SAbout = styled(motion.div)`
     margin: 0 auto;
     position: relative;
     width: 100%;
-    padding: 20vh 0;
+    padding-bottom: 20vh 0;
     display: flex;
     flex-direction: column;
 

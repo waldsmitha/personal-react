@@ -7,7 +7,6 @@ import { flex, maxWidth } from "../util";
 import stock1 from "../img/stock1.png";
 
 const Hero = () => {
-  console.log(maxWidth);
   return (
     <SHero>
       <div className="background">
@@ -17,6 +16,7 @@ const Hero = () => {
           <span>future</span>
         </h1>
       </div>
+      <div className="line"></div>
       <div className="mission-statement">
         <p>
           Whether you are seeking to design a logo, commission a piece of art,
@@ -36,7 +36,8 @@ const SHero = styled(motion.div)`
 
   .background {
     ${flex}
-    min-height: 80vh;
+    min-height: 60vh;
+    margin: 0 2rem;
     background: linear-gradient(
       116.06deg,
       rgba(228, 131, 131, 0.9) 0.23%,
@@ -49,12 +50,19 @@ const SHero = styled(motion.div)`
       text-transform: uppercase;
       line-height: 95%;
       text-align: center;
+      padding: 5rem;
 
       span {
         font-family: "Abril Fatface", cursive;
         color: #7ed1eb;
       }
     }
+  }
+  .line {
+    margin-top: 2rem;
+    width: 100%;
+    height: 0.1rem;
+    background: #f2f2f2;
   }
   .mission-statement {
     padding: 20vh 0;

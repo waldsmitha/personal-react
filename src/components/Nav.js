@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { flex } from "../util";
 
@@ -9,11 +9,21 @@ const Nav = () => {
       <div className="left-line"></div>
       <div className="nav-links">
         <ul>
-          <li>Home</li>
-          <li>Services</li>
-          <li>Portfolio</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="#portfolio">Portfolio</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
       </div>
       <div className="right-line"></div>
@@ -24,18 +34,31 @@ const Nav = () => {
 export default Nav;
 
 const SNav = styled(motion.nav)`
-  ${flex}
-  padding: 2rem;
-  .nav-links {
-    ul {
-      ${flex}
-      list-style: none;
-    }
+  ${({ theme }) => css`
+    ${flex}
+    width: 100%;
+    padding: 2rem 0;
+    .nav-links {
+      ul {
+        ${flex}
+        list-style: none;
+      }
 
-    li {
-      padding: 0 1rem;
+      li {
+        padding: 0 1rem;
+      }
     }
-  }
-
-  width: 100%;
+    .left-line,
+    .right-line {
+      background: ${theme.color.primary};
+      width: 100%;
+      height: 0.1rem;
+    }
+    .left-line {
+      margin-right: 2rem;
+    }
+    .right-line {
+      margin-left: 2rem;
+    }
+  `}
 `;

@@ -16,6 +16,7 @@ html {
     }
     scrollbar-color: darkgray white;
     scrollbar-width: .5rem;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -36,12 +37,18 @@ h3 {
     font-size: 1.3rem;
     padding: 1.5rem 0 ;
 }
-p {
+a,li,p {
     font-size: 1.6rem;
     line-height: 140%;
 }
 a {
     text-decoration: none;
+    color: #f2f2f2;
+    transition: 0.2s;
+        &:hover {
+          color: #E48383E5;
+        }
+
 }
 
 img {

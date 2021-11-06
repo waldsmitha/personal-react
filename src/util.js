@@ -27,5 +27,5 @@ export const flex2 = ({ align, direction, justify }) => `
 `;
 
 export const maxWidth = css`
-  max-width: 1300px;
+  max-width: 1500px;
 `;

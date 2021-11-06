@@ -20,7 +20,7 @@ const Home = () => {
   // const pathId = location.pathname.split("/")[2];
 
   return (
-    <SHome>
+    <SHome id="home">
       <Header />
       <Nav />
       <Hero />
