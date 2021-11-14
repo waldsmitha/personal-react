@@ -13,6 +13,7 @@ import Showcase from "../components/Showcase";
 import About from "../components/About";
 // import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import MobileNav from "../components/MobileNav";
 
 const Home = () => {
   //Get the current location
@@ -23,6 +24,7 @@ const Home = () => {
     <SHome id="home">
       <Header />
       <Nav />
+      <MobileNav />
       <Hero />
       <Services />
       <Showcase />

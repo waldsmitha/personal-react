@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { maxWidth } from "../util";
 
 const Website = ({ data }) => {
-  console.log(data);
+  const gallery = data.gallery;
+  console.log(gallery);
+
   return (
     <SWebsite>
       <div className="container">

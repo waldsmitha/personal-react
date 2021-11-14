@@ -37,18 +37,18 @@ const SHero = styled(motion.div)`
   .background {
     ${flex}
     min-height: 60vh;
-    margin: 0 2rem;
+    margin: 0rem;
     background: linear-gradient(
       116.06deg,
       rgba(228, 131, 131, 0.9) 0.23%,
       rgba(191, 65, 65, 0.9) 115.04%
     );
     h1 {
-      font-size: 200px;
+      font-size: 5rem;
       font-weight: 300;
       font-family: "Montserrat", sans-serif;
       text-transform: uppercase;
-      line-height: 95%;
+      line-height: 130%;
       text-align: center;
       padding: 5rem;
 
@@ -72,9 +72,9 @@ const SHero = styled(motion.div)`
     justify-content: center;
     ${maxWidth}
     p {
-      font-size: 64px;
+      font-size: 3rem;
       line-height: 120%;
-      width: 60%;
+      width: 100%;
       padding-bottom: 20vh;
     }
   }

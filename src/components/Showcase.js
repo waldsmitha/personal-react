@@ -10,6 +10,7 @@ import { maxWidth } from "../util";
 const Showcase = () => {
   const [data, setData] = useState(portfolio);
   const [filteredData, setFilteredData] = useState(portfolio);
+  const sections = ["website", "design", "art", "all"];
 
   const filterData = (filter) => {
     if (filter === "all") {
@@ -19,11 +20,6 @@ const Showcase = () => {
     }
   };
 
-  console.log(filteredData);
-
-  // useEffect(()=> {
-
-  // })
   return (
     <SShowcase id="portfolio">
       <header>
@@ -34,10 +30,9 @@ const Showcase = () => {
         <h3>Category</h3>
         <div className="line"></div>
         <ul>
-          <li onClick={() => filterData("website")}>Websites</li>
-          <li onClick={() => filterData("design")}>Graphic Design</li>
-          <li onClick={() => filterData("art")}>Art</li>
-          <li onClick={() => filterData("all")}>All</li>
+          {sections.map((item) => (
+            <li onClick={() => filterData(item)}>{item}</li>
+          ))}
         </ul>
       </div>
       <div className="pieces">
@@ -56,11 +51,12 @@ const SShowcase = styled(motion.div)`
     background: #cf7878;
     width: 100vw;
     text-align: center;
+    padding: 2rem;
   }
   h1 {
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
-    font-size: 288px;
+    font-size: 3.5rem;
     font-weight: 300;
     color: #131313;
   }
@@ -73,10 +69,10 @@ const SShowcase = styled(motion.div)`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 5rem;
+    padding-top: 2rem;
 
     h3 {
-      font-size: 3.6rem;
+      font-size: 3rem;
       font-family: "Montserrat", sans-serif;
       font-weight: 300;
     }
@@ -88,8 +84,9 @@ const SShowcase = styled(motion.div)`
       list-style: none;
     }
     li {
-      padding: 0 2rem;
+      padding: 0 0.75rem;
       transition: 0.2s;
+      text-transform: capitalize;
       cursor: pointer;
       &:hover {
         color: #e48383e5;

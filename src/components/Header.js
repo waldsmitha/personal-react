@@ -29,13 +29,16 @@ export default Header;
 const SHeader = styled(motion.div)`
   display: flex;
   position: relative;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
   min-height: 10vh;
   display: flex;
+  padding-top: 2rem;
 
   .logo-left,
   .logo-right {
+    display: none;
     font-weight: 300;
     h3 {
       text-transform: uppercase;
@@ -67,9 +70,8 @@ const SHeader = styled(motion.div)`
     font-weight: 300;
     text-transform: uppercase;
     font-family: "Lora", serif;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
   }
 `;

@@ -69,11 +69,11 @@ const SServices = styled(motion.div)`
 
   .approach {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding-bottom: 20vh;
 
     p {
-      width: 50%;
+      width: 100%;
     }
   }
   .web-service,

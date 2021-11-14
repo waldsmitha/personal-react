@@ -39,6 +39,7 @@ const SNav = styled(motion.nav)`
     width: 100%;
     padding: 2rem 0;
     .nav-links {
+      display: none;
       ul {
         ${flex}
         list-style: none;
