@@ -13,11 +13,7 @@ const Services = () => {
         <p>
           Beautiful design is no accident. Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Velit sapien, elit, turpis ac scelerisque
-          nibh vulputate risus. At quam purus lorem mauris consectetur. Lobortis
-          auctor sit purus cursus orci mattis posuere pulvinar felis. Purus
-          lorem rhoncus sit dictum nunc faucibus. Semper adipiscing imperdiet
-          sodales nec, semper nec elit. Consequat amet, adipiscing convallis dis
-          eget pretium, id viverra ultricies.
+          nibh vulputate risus.
         </p>
       </div>
       <div className="web-service">
@@ -63,47 +59,47 @@ const Services = () => {
 
 export default Services;
 
+const paddingVert = "10vh";
+
 const SServices = styled(motion.div)`
-  ${maxWidth}
+  padding: 0 1rem;
   margin: 0 auto;
+
+  h2 {
+    padding-bottom: 1rem;
+  }
 
   .approach {
     display: flex;
     flex-direction: column;
-    padding-bottom: 20vh;
-
-    p {
-      width: 100%;
-    }
+    padding-bottom: ${paddingVert};
   }
   .web-service,
   .design-service,
   .art-service {
     display: flex;
-    padding-bottom: 20vh;
+    flex-direction: column;
+    padding-bottom: ${paddingVert};
   }
 
   .art-service {
     display: flex;
-    padding-bottom: 20vh;
+    padding-bottom: ${paddingVert};
     .art-info {
       display: flex;
       flex-direction: column;
       a {
-        margin-top: 5rem;
-      }
-      h2 {
-        margin-bottom: 5rem;
+        margin: 1rem 0;
       }
     }
     .art-images {
       display: flex;
-      padding-left: 2rem;
-      align-items: flex-end;
+      flex-direction: column;
+
       img {
         object-fit: cover;
-        height: 50%;
-        width: 350px;
+        height: auto;
+        width: 100%;
       }
     }
   }

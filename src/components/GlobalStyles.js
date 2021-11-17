@@ -1,5 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
+const primaryFontSize = 3.5;
+const secondaryFontSize = (primaryFontSize * 4) / 9;
+const primaryFontSizeFinal = `${primaryFontSize}rem`;
+const secondaryFontSizeFinal = `${secondaryFontSize}rem`;
+
 const GlobalStyles = createGlobalStyle`
 *{
     margin: 0;
@@ -20,35 +25,47 @@ html {
 }
 
 body {
-    /* font-family: 'Montserrat', sans-serif; */
-      font-family: "Lora", serif;
+    /* font-family: 'Lora', serif; */
+    font-family: 'Poppins', sans-serif;
     width: 100%;
     background: #131313;
-    color: #f2f2f2;
+    color: #ababab;
+}
+
+
+
+h1 {
+    font-size: ${primaryFontSizeFinal};
 }
 
 h2 {
-    font-size: 4.8rem;
-    font-family: 'Abril Fatface', cursive;
-    font-weight: lighter
+    font-size: ${secondaryFontSizeFinal}
 }
 
 h3 {
     font-size: 1.3rem;
-    padding: 1.5rem 0 ;
+    font-weight: 300;
 }
 a,li,p {
-    font-size: 1.6rem;
+    font-size: .625rem;
     line-height: 140%;
 }
 a {
     text-decoration: none;
-    color: #f2f2f2;
+    color: #ababab;
     transition: 0.2s;
         &:hover {
           color: #E48383E5;
         }
 
+}
+li {
+    list-style: none;
+}
+p {
+    font-size: 1.25rem;
+    line-height: 140%;
+    font-weight: 300;
 }
 
 img {

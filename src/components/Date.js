@@ -42,13 +42,21 @@ const CurrentDate = () => {
   const currentDay = getCurrentDay();
   const currentDayName = weekDays[new Date().getDay()];
 
-  const fullDate = `${currentDayName} ${currentMonth} ${currentDay}, ${currentYear}`;
+  const fullDate = `${currentDayName} 
+  ${currentMonth} ${currentDay} 
+  ${currentYear}`;
 
-  return <SDate>{fullDate}</SDate>;
+  return (
+    <SDate>
+      <div>{currentDayName}</div>
+      <div>
+        {currentMonth} {currentDay}
+      </div>
+      <div>{currentYear}</div>
+    </SDate>
+  );
 };
 
 export default CurrentDate;
 
-const SDate = styled(motion.div)`
-  text-transform: capitalize;
-`;
+const SDate = styled(motion.div)``;

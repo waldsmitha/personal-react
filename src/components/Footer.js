@@ -30,6 +30,10 @@ const SFooter = styled(motion.div)`
     min-height: 20vh;
     background: ${theme.color.secondary};
     color: ${theme.color.background};
+
+    p {
+      font-size: 1rem;
+    }
     .social-media-icons {
       display: flex;
       & > * {

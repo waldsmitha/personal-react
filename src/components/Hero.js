@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { flex, maxWidth } from "../util";
+import CurrentDate from "./Date";
+import Nav from "./Nav";
 
 //Media
 import stock1 from "../img/stock1.png";
@@ -9,14 +11,55 @@ import stock1 from "../img/stock1.png";
 const Hero = () => {
   return (
     <SHero>
-      <div className="background">
+      <div className="main-content">
+        <div>
+          <header>
+            <CurrentDate />{" "}
+            <div className="website">
+              austinb
+              <br />
+              dev
+              <br />
+              .com
+            </div>
+          </header>
+          <h1 className="cta">
+            <span>design</span>
+            <span className="smaller-ft">your</span>
+            <span>future</span>
+          </h1>
+        </div>
+        <div className="middle-section">
+          <div className="services">
+            <ul>
+              <li>beautiful & responsive websites</li>
+              <li>graphic design</li>
+            </ul>
+            <ul>
+              <li>logos</li>
+              <li>physical / digital art</li>
+            </ul>
+          </div>
+          <h2>skills & tools</h2>
+          <div className="skills">
+            <ul>
+              <li>javascript</li>
+              <li>css/sass</li>
+              <li>wordpress</li>
+            </ul>
+            <ul>
+              <li>react</li>
+              <li>html</li>
+              <li>webflow</li>
+            </ul>
+          </div>
+        </div>
         <h1>
-          design <br />
-          your <br />
-          <span>future</span>
+          austin
+          <br />
+          waldsmith
         </h1>
       </div>
-      <div className="line"></div>
       <div className="mission-statement">
         <p>
           Whether you are seeking to design a logo, commission a piece of art,
@@ -32,54 +75,72 @@ const Hero = () => {
 export default Hero;
 
 const SHero = styled(motion.div)`
-  width: 100%;
+  text-transform: uppercase;
+  padding-top: 2.5rem;
 
-  .background {
-    ${flex}
-    min-height: 60vh;
-    margin: 0rem;
-    background: linear-gradient(
-      116.06deg,
-      rgba(228, 131, 131, 0.9) 0.23%,
-      rgba(191, 65, 65, 0.9) 115.04%
-    );
-    h1 {
-      font-size: 5rem;
-      font-weight: 300;
-      font-family: "Montserrat", sans-serif;
-      text-transform: uppercase;
-      line-height: 130%;
-      text-align: center;
-      padding: 5rem;
-
-      span {
-        font-family: "Abril Fatface", cursive;
-        color: #7ed1eb;
-      }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > * {
+      padding: 1rem 0;
     }
   }
-  .line {
-    margin-top: 2rem;
-    width: 100%;
-    height: 0.1rem;
-    background: #f2f2f2;
+  header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    padding: 0 0.25rem 1rem 0.25rem;
+    line-height: 95%;
+    .website {
+      text-align: right;
+    }
   }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+  }
+  h1 {
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 80%;
+    text-align: center;
+    padding: 1rem 0;
+    color: #2aa2bc;
+    .smaller-ft {
+      font-size: 2.5rem;
+    }
+  }
+  .middle-section {
+    text-align: center;
+    padding-top: 0;
+    h2 {
+      padding: 0.5rem 0;
+    }
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+
+    li {
+      padding: 0 0.5rem;
+    }
+  }
+
   .mission-statement {
-    padding: 20vh 0;
+    padding: 10vh 1rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    ${maxWidth}
-    p {
-      font-size: 3rem;
-      line-height: 120%;
-      width: 100%;
-      padding-bottom: 20vh;
-    }
-  }
 
-  img {
-    padding-bottom: 20vh;
+    p {
+      padding-bottom: 10vh;
+      width: 70%;
+      text-transform: none;
+    }
   }
 `;

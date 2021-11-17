@@ -54,7 +54,6 @@ const SShowcase = styled(motion.div)`
     padding: 2rem;
   }
   h1 {
-    font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     font-size: 3.5rem;
     font-weight: 300;
@@ -69,16 +68,8 @@ const SShowcase = styled(motion.div)`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 2rem;
+    padding: 2rem;
 
-    h3 {
-      font-size: 3rem;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 300;
-    }
-    h2 {
-      font-size: 3.6rem;
-    }
     ul {
       display: flex;
       list-style: none;
@@ -93,7 +84,7 @@ const SShowcase = styled(motion.div)`
       }
     }
     .line {
-      height: 0.1rem;
+      height: 0.05rem;
       margin: 0.5rem;
       margin-top: 0rem;
       width: 10%;

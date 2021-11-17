@@ -5,7 +5,7 @@ import { maxWidth } from "../util";
 
 const Website = ({ data }) => {
   const gallery = data.gallery;
-  console.log(gallery);
+  // console.log(gallery);
 
   return (
     <SWebsite>
@@ -47,52 +47,51 @@ const Website = ({ data }) => {
 export default Website;
 
 const SWebsite = styled(motion.div)`
-  ${maxWidth}
   display: flex;
   flex-direction: column;
+  padding-bottom: 2rem;
 
   img {
     object-fit: cover;
   }
   .container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    overflow: hidden;
-    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem 2rem 1rem;
   }
 
   .main-img {
-    width: 350px;
+    width: 100%;
     height: 100%;
-    padding-right: 2rem;
   }
 
   .website-info {
-    padding: 0 2rem;
-
-    p {
-      margin: 2rem 0;
+    h2 {
+      margin-top: 1rem;
     }
+    p {
+      margin: 1rem 0;
+    }
+    margin-bottom: 2rem;
   }
   .website-gallery {
     display: grid;
     grid-template-columns: auto auto;
-    padding-left: 2rem;
+    grid-gap: 1rem;
     img {
       object-fit: cover;
       width: 100%;
       height: 100%;
-      padding: 0.2rem;
     }
   }
-  .link {
+  a {
     color: #cf7878;
-    padding-top: 2rem;
   }
   .line {
     width: 75%;
     margin: 0 auto;
     height: 0.1rem;
-    background: #f2f2f2;
+    background: #ababab;
   }
 `;
