@@ -19,6 +19,11 @@ const theme = {
     },
     family: `font-family: 'Lora', serif;`,
   },
+  spacing: {
+    sectionPaddingMobile: "10vh",
+    sectionPaddingDesktop: "20vh",
+    maxWidth: "1300px",
+  },
   breakpoint: {
     mobile: "375px",
     tablet: "600px",

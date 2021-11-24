@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { revealUp } from "../animations";
+import { revealNavBar } from "../animations";
 import NavLinks from "./NavLinks";
 
 const Header = ({ navActive, setNavActive, navBarActive }) => {
@@ -11,10 +11,9 @@ const Header = ({ navActive, setNavActive, navBarActive }) => {
 
   return (
     <SHeader
-      variants={revealUp}
+      variants={revealNavBar}
       initial="hidden"
       animate={navBarActive ? "show" : "hidden"}
-      onClick={() => navToggle()}
     >
       <div className="flex-container">
         <div className="logo-left">
@@ -23,7 +22,6 @@ const Header = ({ navActive, setNavActive, navBarActive }) => {
           </h3>
         </div>
       </div>
-      <h2>Navigation</h2>
       <NavLinks
         navActive={navActive}
         setNavActive={setNavActive}
@@ -84,6 +82,14 @@ const SHeader = styled(motion.div)`
     li {
       padding: 0 0.5rem;
     }
+  }
+  button {
+    border-radius: 0;
+    background: #ababab;
+    border: none;
+    height: 1rem;
+    width: 1rem;
+    transform: rotate(45deg);
   }
   @media screen and (min-width: 768px) {
     ul {

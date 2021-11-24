@@ -1,58 +1,43 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import { maxWidth } from "../util";
+import { useScroll } from "./UseScroll";
+import { opacity, revealRight } from "../animations";
 //Media
 import stock1 from "../img/stock1.png";
+import { serviceData } from "../data";
+import ServicesItem from "./ServiceItem";
 
 const Services = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <SServices>
-      <div id="services" className="approach">
-        <h2>My Approach</h2>
-        <p>
-          Beautiful design is no accident. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Velit sapien, elit, turpis ac scelerisque
-          nibh vulputate risus.
-        </p>
-      </div>
-      <div className="web-service">
-        <h2>Create a web presence with style</h2>
-        <div className="web-service-info">
+    <SServices id="services">
+      <motion.div
+        className="mission-statement"
+        ref={element}
+        initial="hidden"
+        animate={controls}
+        variants={opacity}
+      >
+        <div>
+          <h2>My Promise</h2>
           <p>
-            Whether you want a website built in Wordpress, Webflow, or coded
-            from scratch, I will work with you to develop your digital presence
-            and bring your website to life.
+            Whether you are seeking to design a logo, commission a piece of art,
+            or build a website, I have the skillset to exceed your expectations
+            and deliver something truly beautiful.
           </p>
-          <div className="link">See Past Projects</div>
         </div>
-      </div>
-      <div className="design-service" align>
-        <h2>Design a unique logo for your unique business</h2>
-        <div className="design-service-info">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit
-            sapien, elit, turpis ac scelerisque nibh vulputate risus. At quam
-            purus lorem mauris consectetur.
-          </p>
-          <div className="link">See Past Projects</div>
-        </div>
-      </div>
-      <div className="art-service">
-        <div className="art-info">
-          <h2>Commission a beautiful, one of a kind piece of art</h2>
-          <p>
-            Physical or digital, I can create that one of a kind piece you have
-            been dreaming of.
-          </p>
-          <a href="#portfolio">See Past Projects</a>
-        </div>
-        <div className="art-images">
-          <img src={stock1} alt="" />
-          <img src={stock1} alt="" />
-          <img src={stock1} alt="" />
-        </div>
-      </div>
+        <img src={stock1} alt="stock1" />
+      </motion.div>
+      {serviceData.map((item) => (
+        <ServicesItem
+          key={item.id}
+          header={item.header}
+          body={item.body}
+          images={item.gallery}
+        />
+      ))}
     </SServices>
   );
 };
@@ -62,45 +47,38 @@ export default Services;
 const paddingVert = "10vh";
 
 const SServices = styled(motion.div)`
-  padding: 0 1rem;
-  margin: 0 auto;
+  ${({ theme }) => css`
+    padding: 0 1rem;
+    margin: 0 auto;
+    max-width: 1300px;
 
-  h2 {
-    padding-bottom: 1rem;
-  }
-
-  .approach {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: ${paddingVert};
-  }
-  .web-service,
-  .design-service,
-  .art-service {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: ${paddingVert};
-  }
-
-  .art-service {
-    display: flex;
-    padding-bottom: ${paddingVert};
-    .art-info {
-      display: flex;
-      flex-direction: column;
-      a {
-        margin: 1rem 0;
-      }
+    a {
+      font-size: 1rem;
+      margin: 1rem 0;
     }
-    .art-images {
+    h2 {
+      color: #2aa2bc;
+      padding-bottom: 1rem;
+    }
+
+    & > * {
+      padding: ${theme.spacing.sectionPaddingMobile} 0;
+    }
+
+    .mission-statement {
+      padding: ${theme.spacing.sectionPaddingMobile} 1rem;
       display: flex;
       flex-direction: column;
-
+      justify-content: center;
       img {
-        object-fit: cover;
-        height: auto;
         width: 100%;
+        object-fit: cover;
+      }
+      p {
+        padding-bottom: 10vh;
+        width: 70%;
+        text-transform: none;
       }
     }
-  }
+  `}
 `;

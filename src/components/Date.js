@@ -42,10 +42,6 @@ const CurrentDate = () => {
   const currentDay = getCurrentDay();
   const currentDayName = weekDays[new Date().getDay()];
 
-  const fullDate = `${currentDayName} 
-  ${currentMonth} ${currentDay} 
-  ${currentYear}`;
-
   return (
     <SDate>
       <div>{currentDayName}</div>

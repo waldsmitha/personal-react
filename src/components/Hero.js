@@ -1,72 +1,92 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { flex, maxWidth } from "../util";
 import CurrentDate from "./Date";
-import Nav from "./Nav";
-
-//Media
-import stock1 from "../img/stock1.png";
+import { revealUp, stagger } from "../animations";
 
 const Hero = () => {
   return (
     <SHero>
       <div className="main-content">
         <div>
-          <header>
-            <CurrentDate />{" "}
-            <div className="website">
-              austinb
-              <br />
-              dev
-              <br />
-              .com
+          <div className="no-overflow">
+            <motion.header
+              variants={revealUp}
+              initial="hidden"
+              animate={"show"}
+            >
+              <CurrentDate />{" "}
+              <div className="website">
+                austinb
+                <br />
+                dev
+                <br />
+                .com
+              </div>
+            </motion.header>
+          </div>
+          <motion.div
+            className="cta"
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+          >
+            <div className="no-overflow">
+              <motion.h1 variants={revealUp}>design</motion.h1>
             </div>
-          </header>
-          <h1 className="cta">
-            <span>design</span>
-            <span className="smaller-ft">your</span>
-            <span>future</span>
-          </h1>
+            <div className="no-overflow">
+              <motion.h1 className="smaller-ft" variants={revealUp}>
+                your
+              </motion.h1>
+            </div>
+            <div className="no-overflow">
+              <motion.h1 variants={revealUp}>future</motion.h1>
+            </div>
+          </motion.div>
         </div>
-        <div className="middle-section">
-          <div className="services">
-            <ul>
-              <li>beautiful & responsive websites</li>
-              <li>graphic design</li>
-            </ul>
-            <ul>
-              <li>logos</li>
-              <li>physical / digital art</li>
-            </ul>
+        <motion.div
+          className="middle-section"
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+        >
+          <div className="no-overflow">
+            <motion.div className="services" variants={revealUp}>
+              <ul>
+                <li>beautiful & responsive websites</li>
+                <li>graphic design</li>
+              </ul>
+              <ul>
+                <li>logos</li>
+                <li>physical / digital art</li>
+              </ul>
+            </motion.div>
           </div>
-          <h2>skills & tools</h2>
-          <div className="skills">
-            <ul>
-              <li>javascript</li>
-              <li>css/sass</li>
-              <li>wordpress</li>
-            </ul>
-            <ul>
-              <li>react</li>
-              <li>html</li>
-              <li>webflow</li>
-            </ul>
+          <div className="no-overflow">
+            <motion.h2 variants={revealUp}>skills & tools</motion.h2>
           </div>
+          <div className="no-overflow">
+            <motion.div className="skills" variants={revealUp}>
+              <ul>
+                <li>javascript</li>
+                <li>css/sass</li>
+                <li>wordpress</li>
+              </ul>
+              <ul>
+                <li>react</li>
+                <li>html</li>
+                <li>webflow</li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.div>
+        <div className="no-overflow">
+          <motion.h1 variants={revealUp} initial="hidden" animate="show">
+            austin
+            <br />
+            waldsmith
+          </motion.h1>
         </div>
-        <h1>
-          austin
-          <br />
-          waldsmith
-        </h1>
-      </div>
-      <div className="mission-statement">
-        <p>
-          Whether you are seeking to design a logo, commission a piece of art,
-          or build a website, I have the skillset to exceed your expectations
-          and deliver something truly beautiful.{" "}
-        </p>
-        <img src={stock1} alt="stock1" />
       </div>
     </SHero>
   );
@@ -76,14 +96,18 @@ export default Hero;
 
 const SHero = styled(motion.div)`
   text-transform: uppercase;
-  padding-top: 2.5rem;
+  padding-top: 2rem;
+  min-height: 80vh;
 
+  .no-overflow {
+    overflow: hidden;
+  }
   .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     & > * {
-      padding: 1rem 0;
+      padding: 2rem 0;
     }
   }
   header {
@@ -101,6 +125,10 @@ const SHero = styled(motion.div)`
     display: flex;
     flex-direction: column;
     padding-top: 0;
+    h1 {
+      padding: 0;
+      margin: 0;
+    }
   }
   h1 {
     font-weight: 600;
@@ -127,20 +155,6 @@ const SHero = styled(motion.div)`
 
     li {
       padding: 0 0.5rem;
-    }
-  }
-
-  .mission-statement {
-    padding: 10vh 1rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p {
-      padding-bottom: 10vh;
-      width: 70%;
-      text-transform: none;
     }
   }
 `;

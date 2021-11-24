@@ -8,7 +8,7 @@ const Website = ({ data }) => {
   const [element, controls] = useScroll();
   const images = data.gallery;
   return (
-    <SWebsite
+    <SItem
       ref={element}
       initial="hidden"
       animate={controls}
@@ -32,13 +32,13 @@ const Website = ({ data }) => {
         </div>
       </div>
       <div className="line"></div>
-    </SWebsite>
+    </SItem>
   );
 };
 
 export default Website;
 
-const SWebsite = styled(motion.div)`
+const SItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
   max-width: 1300px;

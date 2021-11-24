@@ -2,6 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { maxWidth } from "../util";
+import { useScroll } from "./UseScroll";
+import { widthZeroToFull, revealRight2, revealUp2 } from "../animations";
 //Media
 import email from "../img/email.svg";
 import insta from "../img/insta.svg";
@@ -11,11 +13,33 @@ import twitter from "../img/twitter.svg";
 import stock1 from "../img/stock1.png";
 
 const About = () => {
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
+
   return (
     <SAbout id="about">
       <header>
-        <h1>I don't do this for the money.</h1>
-        <div className="comment">Otherwise I'd be broke.</div>
+        <div className="container">
+          <h1>I don't do this for the money.</h1>
+          <motion.div
+            className="reveal"
+            ref={element2}
+            initial="hidden"
+            animate={controls2}
+            variants={revealRight2}
+          ></motion.div>
+        </div>
+        <div className="container">
+          <motion.div
+            className="comment"
+            ref={element}
+            initial="hidden"
+            animate={controls}
+            variants={revealUp2}
+          >
+            Otherwise I'd be broke.
+          </motion.div>
+        </div>
       </header>
       <div className="flex-container">
         <div className="bio">
@@ -95,10 +119,29 @@ const SAbout = styled(motion.div)`
       display: flex;
       justify-content: center;
       flex-direction: column;
+      position: relative;
 
       h1 {
         font-size: 90px;
         padding-bottom: 2rem;
+      }
+    }
+
+    .container {
+      margin: 0 auto 0 0;
+      overflow: hidden;
+      .reveal {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #131313;
+        top: 0;
+        left: 0;
+      }
+      .comment {
+        color: #ababab;
+        z-index: 10;
+        padding: 0.1rem;
       }
     }
 

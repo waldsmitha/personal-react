@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import NavLinks from "./NavLinks";
+import NavLinksMobile from "./NavLinksMobile";
 
 const MobileNav = ({ navActive, setNavActive }) => {
   const navToggle = () => {
@@ -14,7 +14,7 @@ const MobileNav = ({ navActive, setNavActive }) => {
         ABW
       </h1>
       <div className="center-container">
-        <NavLinks navActive={navActive} setNavActive={setNavActive} />
+        <NavLinksMobile navActive={navActive} setNavActive={setNavActive} />
       </div>
     </SMobileNav>
   );
@@ -36,6 +36,7 @@ const SMobileNav = styled(motion.div)`
     align-items: center;
     height: 100%;
   }
+
   .mobile-nav-logo {
     cursor: pointer;
     position: absolute;
@@ -44,8 +45,11 @@ const SMobileNav = styled(motion.div)`
     list-style: none;
   }
   li {
-    text-transform: capitalize;
+    text-transform: uppercase;
     padding: 0.75rem 0;
+  }
+  a {
+    font-size: 1.25rem;
   }
 `;
 export default MobileNav;

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import portfolio from "../data";
+import { motion, AnimatePresence } from "framer-motion";
+import { portfolio } from "../data";
 
 //Components
 import Website from "./Website";
@@ -31,14 +31,24 @@ const Showcase = () => {
         <div className="line"></div>
         <ul>
           {sections.map((item) => (
-            <li onClick={() => filterData(item)}>{item}</li>
+            <motion.li onClick={() => filterData(item)} key={item}>
+              {item}
+            </motion.li>
           ))}
         </ul>
       </div>
       <div className="pieces">
-        {filteredData.map((item) => (
-          <Website data={item} key={item.name} />
-        ))}
+        <AnimatePresence>
+          {filteredData.map((item) => (
+            <motion.div
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              key={item.id}
+            >
+              <Website data={item} key={item.id} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </SShowcase>
   );
@@ -55,7 +65,8 @@ const SShowcase = styled(motion.div)`
   }
   h1 {
     text-transform: uppercase;
-    font-size: 3.5rem;
+    font-size: clamp(3.5rem, 15vw, 10rem);
+    line-height: 100%;
     font-weight: 300;
     color: #131313;
   }

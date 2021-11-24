@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
 
 const NavLinks = ({ navActive, setNavActive, desktop }) => {
   const links = ["home", "services", "portfolio", "about", "contact"];
@@ -11,7 +9,7 @@ const NavLinks = ({ navActive, setNavActive, desktop }) => {
   return (
     <ul>
       {links.map((item) => (
-        <li onClick={() => navToggle()}>
+        <li key={item} onClick={() => navToggle()}>
           <a href={`#${item}`}>{item}</a>
         </li>
       ))}

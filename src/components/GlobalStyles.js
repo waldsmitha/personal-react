@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const primaryFontSize = 3.5;
-const secondaryFontSize = (primaryFontSize * 4) / 9;
+const secondaryFontSize = (primaryFontSize * 4) / 7;
 const primaryFontSizeFinal = `${primaryFontSize}rem`;
 const secondaryFontSizeFinal = `${secondaryFontSize}rem`;
 
@@ -33,7 +33,7 @@ body {
 }
 
 
-
+//Font Size
 h1 {
     font-size: ${primaryFontSizeFinal};
 }
@@ -47,15 +47,15 @@ h3 {
     font-weight: 300;
 }
 a,li,p {
-    font-size: .625rem;
-    line-height: 140%;
+      line-height: 140%;
+    font-weight: 300;
 }
 a {
     text-decoration: none;
     color: #ababab;
     transition: 0.2s;
         &:hover {
-          color: #E48383E5;
+          color: #2aa2bc;
         }
 
 }
@@ -65,9 +65,38 @@ li {
 p {
     font-size: 1.25rem;
     line-height: 140%;
-    font-weight: 300;
 }
 
+@media screen and (min-width: 550px) {
+  h1 {
+      font-size: 4rem;
+  }
+  h2 {
+      font-size:2.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+    }
+  a,li,p {
+    font-size: 1rem; 
+    }
+  }
+
+@media screen and (min-width: 768px) {
+  h1 {
+      font-size: 6rem;
+  }
+  h2 {
+      font-size:4rem;
+  }
+  h3 {
+    font-size: 2rem;
+        }
+  a,li,p {
+    font-size: 1.25rem; 
+    }
+  }
+  
 img {
     display: block;
 }
