@@ -4,17 +4,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useScroll } from "./UseScroll";
 import { revealUp2 } from "../animations";
 
-const Website = ({ data }) => {
-  const [element, controls] = useScroll();
+import { useLocation, useHistory } from "react-router-dom";
+
+const Website = ({ data, setPathId }) => {
   const images = data.gallery;
+  const location = useLocation();
+  const currentPath = location.pathname.split("/")[1];
+  console.log(currentPath);
+  console.log(data);
+
+  const history = useHistory();
+  const setPath = () => {
+    history.push("");
+    setPathId(null);
+  };
   return (
-    <SWebsite
-      ref={element}
-      initial="hidden"
-      animate={controls}
-      variants={revealUp2}
-    >
-      <div className="container">
+    <SWebsite onClick={() => setPath()}>
+      <h1>Test</h1>
+      {/* <div className="container">
         <div className="website-info">
           <h2>{data.name}</h2>
           <img
@@ -31,7 +38,7 @@ const Website = ({ data }) => {
           ))}
         </div>
       </div>
-      <div className="line"></div>
+      <div className="line"></div> */}
     </SWebsite>
   );
 };
@@ -43,6 +50,9 @@ const SWebsite = styled(motion.div)`
   flex-direction: column;
   max-width: 1300px;
   margin: 0 auto;
+  h1 {
+    color: white;
+  }
 
   img {
     object-fit: cover;

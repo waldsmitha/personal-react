@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolio } from "../data";
+import { useLocation, useHistory } from "react-router-dom";
 
 //Components
 import Website from "./Website";
+import ShowcaseItem from "./ShowcaseItem";
 import { maxWidth } from "../util";
 
 const Showcase = () => {
   const [data, setData] = useState(portfolio);
   const [filteredData, setFilteredData] = useState(portfolio);
   const sections = ["website", "design", "art", "all"];
+  const [pathId, setPathId] = useState(null);
+  // const [pathId, setPathId] = useState(location.pathname.split("/")[1]);
+
+  // console.log(pathId ? "yes" : "nope");
 
   const filterData = (filter) => {
     if (filter === "all") {
@@ -29,6 +35,7 @@ const Showcase = () => {
       <div className="showcase-filter">
         <h3>Category</h3>
         <div className="line"></div>
+
         <ul>
           {sections.map((item) => (
             <motion.li onClick={() => filterData(item)} key={item}>
@@ -37,6 +44,7 @@ const Showcase = () => {
           ))}
         </ul>
       </div>
+      {pathId && <Website data={data} setPathId={setPathId} />}
       <div className="pieces">
         <AnimatePresence>
           {filteredData.map((item) => (
@@ -45,7 +53,7 @@ const Showcase = () => {
               exit={{ opacity: 0 }}
               key={item.id}
             >
-              <Website data={item} key={item.id} />
+              <ShowcaseItem data={item} key={item.id} setPathId={setPathId} />
             </motion.div>
           ))}
         </AnimatePresence>

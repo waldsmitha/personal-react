@@ -4,31 +4,34 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useScroll } from "./UseScroll";
 import { revealUp2 } from "../animations";
 
-const Website = ({ data }) => {
-  const [element, controls] = useScroll();
-  const images = data.gallery;
+import { useHistory } from "react-router-dom";
+
+const ShowcaseItem = ({ data, setPathId }) => {
+  //   const [element, controls] = useScroll();
+  const history = useHistory();
+  //   const pathId = location.pathname.split("/")[2];
+  //   console.log(history.location.pathname.split("/")[1]);
+  const setPath = () => {
+    history.push(data.name);
+    setPathId(data.name);
+  };
   return (
     <SItem
-      ref={element}
-      initial="hidden"
-      animate={controls}
-      variants={revealUp2}
+      //   ref={element}
+      //   initial="hidden"
+      //   animate={controls}
+      //   variants={revealUp2}
+      onClick={() => setPath()}
     >
       <div className="container">
         <div className="website-info">
           <h2>{data.name}</h2>
+          <p>{data.type}</p>
           <img
             src={require(`../img/${data.mainImg}`).default}
             alt="bliss"
             className="main-img"
           />
-          <p>{data.description}</p>
-          <a href="#">View</a>
-        </div>
-        <div className="website-gallery">
-          {images.map((image) => (
-            <img src={require(`../img/${image}`).default} alt="" />
-          ))}
         </div>
       </div>
       <div className="line"></div>
@@ -36,7 +39,7 @@ const Website = ({ data }) => {
   );
 };
 
-export default Website;
+export default ShowcaseItem;
 
 const SItem = styled(motion.div)`
   display: flex;
