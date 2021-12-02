@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { maxWidth } from "../util";
 import { useScroll } from "./UseScroll";
-import { widthZeroToFull, revealRight2, revealUp2 } from "../animations";
+import { revealRight2, revealUp2 } from "../animations";
 //Media
 import email from "../img/email.svg";
 import insta from "../img/insta.svg";
@@ -60,7 +60,6 @@ const About = () => {
       </div>
       <div className="cta">
         <h1>Let's get in touch.</h1>
-        <div className="social-media-icons"></div>
         <form action="#" method="POST">
           {/* <label for="name">First & Last Name:</label> */}
           <div className="flex-container">
@@ -107,7 +106,7 @@ const paddingVert = "10vh";
 const SAbout = styled(motion.div)`
   ${({ theme }) => css`
     ${maxWidth}
-    margin: 0 1rem;
+    margin: 0 auto;
     position: relative;
     padding-bottom: ${paddingVert} 0;
     display: flex;
@@ -166,7 +165,7 @@ const SAbout = styled(motion.div)`
       margin-bottom: ${paddingVert};
       h1 {
         color: ${theme.color.secondary};
-        padding: ${paddingVert} 0;
+        padding: 20vh 0;
       }
     }
     form {
@@ -174,7 +173,12 @@ const SAbout = styled(motion.div)`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      margin: 0 0 2rem 0rem;
+      max-width: 40rem;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      & > * {
+        padding: 2rem 0;
+      }
 
       input,
       textarea {
@@ -199,6 +203,7 @@ const SAbout = styled(motion.div)`
         border: none;
         color: #131313;
         padding: 1rem 0;
+        margin-top: 2rem;
       }
 
       .flex-container {

@@ -28,9 +28,6 @@ const NavLinksMobile = ({ navActive, setNavActive, desktop }) => {
 
 const SOverflow = styled(motion.div)`
   overflow: hidden;
-  a {
-    color: #e48383e5;
-  }
 `;
 
 export default NavLinksMobile;

@@ -13,24 +13,14 @@ import About from "../components/About";
 // import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import MobileNav from "../components/MobileNav";
-import NavLinks from "../components/NavLinks";
 import { revealNavMobile, pulse, opacity } from "../animations";
 
 const Home = () => {
-  //Get the current location
-  // const location = useLocation();
-  // const pathId = location.pathname.split("/")[2];
-
   const [navActive, setNavActive] = useState(true);
 
-  // window.addEventListener("scroll", (e) => console.log(e));
   const [navBarActive, setNavBarActive] = useState(true);
   const calcDeltaY = (e) => {
-    if (e.deltaY > 100) {
-      setNavBarActive(false);
-    } else {
-      setNavBarActive(true);
-    }
+    e.deltaY > 0 ? setNavBarActive(false) : setNavBarActive(true);
   };
   const navToggle = () => {
     setNavActive(!navActive);

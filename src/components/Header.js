@@ -5,9 +5,9 @@ import { revealNavBar } from "../animations";
 import NavLinks from "./NavLinks";
 
 const Header = ({ navActive, setNavActive, navBarActive }) => {
-  const navToggle = () => {
-    setNavActive(!navActive);
-  };
+  // const navToggle = () => {
+  //   setNavActive(!navActive);
+  // };
 
   return (
     <SHeader

@@ -1,44 +1,52 @@
 import React from "react";
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
-import { useScroll } from "./UseScroll";
-import { revealUp2 } from "../animations";
+import { motion } from "framer-motion";
+// import { useScroll } from "./UseScroll";
+import { popIn } from "../animations";
 
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const Website = ({ data, setPathId }) => {
-  const images = data.gallery;
-  const location = useLocation();
-  const currentPath = location.pathname.split("/")[1];
-  console.log(currentPath);
-  console.log(data);
+const Website = ({ setPathId, itemDetail }) => {
+  const { name, description, type, mainImg, gallery, id } = itemDetail[0];
 
   const history = useHistory();
   const setPath = () => {
     history.push("");
     setPathId(null);
   };
+
   return (
-    <SWebsite onClick={() => setPath()}>
-      <h1>Test</h1>
-      {/* <div className="container">
+    <SWebsite
+      variants={popIn}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      onClick={() => setPath()}
+    >
+      <div className="container">
         <div className="website-info">
-          <h2>{data.name}</h2>
-          <img
-            src={require(`../img/${data.mainImg}`).default}
+          <motion.h2 layoutId={`title ${name}`}>{name}</motion.h2>
+          <motion.p layoutId={`type ${name}`}>{type}</motion.p>
+          <motion.img
+            src={require(`../img/${mainImg}`).default}
             alt="bliss"
             className="main-img"
+            layoutId={`image-${id}`}
           />
-          <p>{data.description}</p>
-          <a href="#">View</a>
+          <p>{description}</p>
+          <a href="/">View</a>
         </div>
         <div className="website-gallery">
-          {images.map((image) => (
-            <img src={require(`../img/${image}`).default} alt="" />
+          {gallery.map((image, i) => (
+            <img
+              src={require(`../img/${image}`).default}
+              key={`${image}${i}`}
+              alt={image}
+            />
           ))}
         </div>
       </div>
-      <div className="line"></div> */}
+      <div className="line"></div>
     </SWebsite>
   );
 };
@@ -46,10 +54,18 @@ const Website = ({ data, setPathId }) => {
 export default Website;
 
 const SWebsite = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  max-width: 1300px;
+  cursor: pointer;
   margin: 0 auto;
+  overflow: scroll;
+  background: #131313;
+  z-index: 100;
   h1 {
     color: white;
   }
@@ -62,6 +78,8 @@ const SWebsite = styled(motion.div)`
     flex-direction: column;
     align-items: center;
     padding: 0 1rem 2rem 1rem;
+    max-width: 1300px;
+    margin: 0 auto;
   }
 
   .main-img {

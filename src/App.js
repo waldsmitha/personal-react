@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <Route path={["/game/:id", "/"]}>
+      <Route path={["/showcase:id", "/"]}>
         <Theme>
           <Home />
         </Theme>

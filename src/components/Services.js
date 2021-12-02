@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { useScroll } from "./UseScroll";
-import { opacity, revealRight } from "../animations";
+import { opacity } from "../animations";
 //Media
 import stock1 from "../img/stock1.png";
 import { serviceData } from "../data";
@@ -44,11 +44,10 @@ const Services = () => {
 
 export default Services;
 
-const paddingVert = "10vh";
-
 const SServices = styled(motion.div)`
   ${({ theme }) => css`
     padding: 0 1rem;
+    padding-bottom: 10vh;
     margin: 0 auto;
     max-width: 1300px;
 

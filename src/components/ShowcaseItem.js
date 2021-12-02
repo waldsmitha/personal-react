@@ -1,40 +1,36 @@
 import React from "react";
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
-import { useScroll } from "./UseScroll";
-import { revealUp2 } from "../animations";
+import { motion } from "framer-motion";
+// import { useScroll } from "./UseScroll";
+import { popIn } from "../animations";
 
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const ShowcaseItem = ({ data, setPathId }) => {
+const ShowcaseItem = ({ data }) => {
   //   const [element, controls] = useScroll();
-  const history = useHistory();
-  //   const pathId = location.pathname.split("/")[2];
-  //   console.log(history.location.pathname.split("/")[1]);
-  const setPath = () => {
-    history.push(data.name);
-    setPathId(data.name);
-  };
+
   return (
     <SItem
       //   ref={element}
-      //   initial="hidden"
-      //   animate={controls}
-      //   variants={revealUp2}
-      onClick={() => setPath()}
+      variants={popIn}
+      initial="hidden"
+      animate="show"
     >
-      <div className="container">
-        <div className="website-info">
-          <h2>{data.name}</h2>
-          <p>{data.type}</p>
-          <img
-            src={require(`../img/${data.mainImg}`).default}
-            alt="bliss"
-            className="main-img"
-          />
+      <Link to={`/showcase/${data.name}`}>
+        <div className="container">
+          <div className="website-info">
+            <motion.h2 layoutId={`title ${data.name}`}>{data.name}</motion.h2>
+            <motion.p layoutId={`type ${data.name}`}>{data.type}</motion.p>
+            <motion.img
+              src={require(`../img/${data.mainImg}`).default}
+              alt="bliss"
+              className="main-img"
+              layoutId={`image-${data.id}`}
+            />
+          </div>
         </div>
-      </div>
-      <div className="line"></div>
+        <div className="line"></div>
+      </Link>
     </SItem>
   );
 };
@@ -44,7 +40,6 @@ export default ShowcaseItem;
 const SItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  max-width: 1300px;
   margin: 0 auto;
 
   img {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { portfolio } from "../data";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 //Components
 import Website from "./Website";
@@ -10,54 +10,70 @@ import ShowcaseItem from "./ShowcaseItem";
 import { maxWidth } from "../util";
 
 const Showcase = () => {
-  const [data, setData] = useState(portfolio);
   const [filteredData, setFilteredData] = useState(portfolio);
   const sections = ["website", "design", "art", "all"];
+  const location = useLocation();
+  const currentPath = location.pathname.split("/")[2];
+  const [itemDetail, setItemDetail] = useState(null);
   const [pathId, setPathId] = useState(null);
-  // const [pathId, setPathId] = useState(location.pathname.split("/")[1]);
-
-  // console.log(pathId ? "yes" : "nope");
 
   const filterData = (filter) => {
     if (filter === "all") {
-      setFilteredData(data);
+      setFilteredData(portfolio);
     } else {
-      setFilteredData(data.filter((item) => item.type === filter));
+      setFilteredData(portfolio.filter((item) => item.type === filter));
     }
   };
 
+  const updateItemDetail = () => {
+    if (currentPath) {
+      let filteredPort = portfolio.filter((item) => item.name === currentPath);
+      setItemDetail(filteredPort);
+    } else {
+      setItemDetail("");
+    }
+  };
+
+  useEffect(() => {
+    setPathId(currentPath);
+    updateItemDetail();
+  }, [location]);
+
   return (
     <SShowcase id="portfolio">
-      <header>
-        <h1>showcase</h1>
-      </header>
-      <div className="line-design"></div>
-      <div className="showcase-filter">
-        <h3>Category</h3>
-        <div className="line"></div>
-
-        <ul>
-          {sections.map((item) => (
-            <motion.li onClick={() => filterData(item)} key={item}>
-              {item}
-            </motion.li>
-          ))}
-        </ul>
-      </div>
-      {pathId && <Website data={data} setPathId={setPathId} />}
-      <div className="pieces">
+      <AnimateSharedLayout type="crossfade">
+        <header>
+          <h1>showcase</h1>
+        </header>
+        <div className="line-design"></div>
+        <div className="showcase-filter">
+          <h3>Category</h3>
+          <div className="line"></div>
+          <ul>
+            {sections.map((item) => (
+              <motion.li onClick={() => filterData(item)} key={item}>
+                {item}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
         <AnimatePresence>
-          {filteredData.map((item) => (
-            <motion.div
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              key={item.id}
-            >
-              <ShowcaseItem data={item} key={item.id} setPathId={setPathId} />
-            </motion.div>
-          ))}
+          {pathId && <Website setPathId={setPathId} itemDetail={itemDetail} />}
         </AnimatePresence>
-      </div>
+        <div className="pieces">
+          <AnimatePresence>
+            {filteredData.map((item) => (
+              <motion.div
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                key={`showcase ${item.id}`}
+              >
+                <ShowcaseItem data={item} key={item.id} layoutID={item.id} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </AnimateSharedLayout>
     </SShowcase>
   );
 };
@@ -70,17 +86,25 @@ const SShowcase = styled(motion.div)`
     width: 100vw;
     text-align: center;
     padding: 2rem;
+    h1 {
+      text-transform: uppercase;
+      font-size: clamp(3.5rem, 15vw, 10rem);
+      line-height: 100%;
+      font-weight: 300;
+      color: #131313;
+    }
   }
-  h1 {
-    text-transform: uppercase;
-    font-size: clamp(3.5rem, 15vw, 10rem);
-    line-height: 100%;
-    font-weight: 300;
-    color: #131313;
-  }
+
   .pieces {
     ${maxWidth}
     margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    & > * {
+      flex: 1 1 300px;
+    }
   }
   .showcase-filter {
     display: flex;

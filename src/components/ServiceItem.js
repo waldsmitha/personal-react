@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useScroll } from "./UseScroll";
-import { opacity, revealRight } from "../animations";
+import { revealRight } from "../animations";
 //Media
-import stock1 from "../img/stock1.png";
 
 const ServicesItem = ({ header, body, images }) => {
   const [element, controls] = useScroll();
@@ -24,8 +23,12 @@ const ServicesItem = ({ header, body, images }) => {
           <a href="#portfolio">See Past Projects</a>
         </div>
         <div className="art-images">
-          {images.map((image) => (
-            <img src={require(`../img/${image}`).default} alt="" />
+          {images.map((image, i) => (
+            <img
+              src={require(`../img/${image}`).default}
+              key={`service ${image} ${i}`}
+              alt=""
+            />
           ))}
         </div>
       </motion.div>
@@ -35,15 +38,12 @@ const ServicesItem = ({ header, body, images }) => {
 
 export default ServicesItem;
 
-const paddingVert = "10vh";
-
 const SServiceItem = styled(motion.div)`
   margin: 0 auto;
 
   a {
     font-size: 1rem;
-
-    /* padding: 1rem 0; */
+    color: #e48383e5;
   }
   h2 {
     color: #2aa2bc;
@@ -52,8 +52,8 @@ const SServiceItem = styled(motion.div)`
 
   .art-service {
     display: flex;
-    padding-bottom: ${paddingVert};
     flex-wrap: wrap;
+
     .art-info {
       display: flex;
       flex-direction: column;
@@ -66,7 +66,13 @@ const SServiceItem = styled(motion.div)`
       flex: 1 1 15rem;
       width: 100%;
       padding: 0 1rem;
-      overflow: hidden;
+      /* overflow: hidden; */
+      img {
+        margin: 0 0.25rem;
+        :nth-child(2) {
+          transform: translateY(5rem);
+        }
+      }
 
       img {
         object-fit: cover;
