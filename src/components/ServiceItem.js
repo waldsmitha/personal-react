@@ -41,10 +41,6 @@ export default ServicesItem;
 const SServiceItem = styled(motion.div)`
   margin: 0 auto;
 
-  a {
-    font-size: 1rem;
-    color: #e48383e5;
-  }
   h2 {
     color: #2aa2bc;
     padding-bottom: 1rem;
@@ -59,6 +55,11 @@ const SServiceItem = styled(motion.div)`
       flex-direction: column;
       flex: 1 1 20rem;
       padding: 1rem;
+      a {
+        padding-top: 1rem;
+        font-size: 1rem;
+        color: #e48383e5;
+      }
     }
     .art-images {
       display: flex;
@@ -66,11 +67,18 @@ const SServiceItem = styled(motion.div)`
       flex: 1 1 15rem;
       width: 100%;
       padding: 0 1rem;
-      /* overflow: hidden; */
+      overflow: hidden;
       img {
         margin: 0 0.25rem;
+        max-width: 200px;
+
         :nth-child(2) {
-          transform: translateY(5rem);
+          width: 25%;
+          height: 80%;
+        }
+        :nth-child(3) {
+          width: 12.5%;
+          height: 70%;
         }
       }
 

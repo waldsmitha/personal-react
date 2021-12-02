@@ -59,7 +59,7 @@ const About = () => {
         {/* <div className="arrow-down"></div> */}
       </div>
       <div className="cta">
-        <h1>Let's get in touch.</h1>
+        <h1 id="contact">Let's get in touch.</h1>
         <form action="#" method="POST">
           {/* <label for="name">First & Last Name:</label> */}
           <div className="flex-container">

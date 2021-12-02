@@ -29,7 +29,7 @@ const ShowcaseItem = ({ data }) => {
             />
           </div>
         </div>
-        <div className="line"></div>
+        {/* <div className="line"></div> */}
       </Link>
     </SItem>
   );
@@ -40,32 +40,38 @@ export default ShowcaseItem;
 const SItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 1rem auto;
 
   img {
     object-fit: cover;
   }
   .container {
+    box-shadow: rgba(255, 255, 255, 0.15) 0px 3px 8px;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem 2rem 1rem;
+    padding: 1rem;
+    margin: 0 1rem 1rem 1rem;
   }
 
   .main-img {
     width: 100%;
     height: 100%;
     max-height: 450px;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
   }
 
   .website-info {
     h2 {
       margin-top: 1rem;
+      text-transform: uppercase;
     }
     p {
-      margin: 2rem 0;
+      margin: 1rem 0;
+      text-transform: uppercase;
     }
-    margin-bottom: 2rem;
   }
   .website-gallery {
     display: grid;
@@ -78,10 +84,7 @@ const SItem = styled(motion.div)`
       height: 100%;
     }
   }
-  a {
-    color: #cf7878;
-    /* font-size: 1rem; */
-  }
+
   .line {
     width: 75%;
     margin: 5rem auto;

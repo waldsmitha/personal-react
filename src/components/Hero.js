@@ -96,7 +96,6 @@ export default Hero;
 
 const SHero = styled(motion.div)`
   text-transform: uppercase;
-  padding-top: 2rem;
   min-height: 80vh;
 
   .no-overflow {

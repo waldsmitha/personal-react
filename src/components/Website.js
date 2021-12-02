@@ -63,9 +63,11 @@ const SWebsite = styled(motion.div)`
   flex-direction: column;
   cursor: pointer;
   margin: 0 auto;
-  overflow: scroll;
+  /* overflow: scroll; */
+  overflow-x: hidden;
   background: #131313;
   z-index: 100;
+
   h1 {
     color: white;
   }
