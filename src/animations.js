@@ -110,7 +110,6 @@ export const revealUp = {
   show: {
     y: "0%",
     rotation: 0.02,
-    zIndex: 10,
     transition: {
       duration: 1,
       ease: "easeInOut",
@@ -119,7 +118,6 @@ export const revealUp = {
   hidden: {
     y: "100%",
     rotation: 0.02,
-    zIndex: -1,
     transition: {
       duration: 1,
       ease: "easeInOut",
@@ -128,20 +126,34 @@ export const revealUp = {
 };
 export const revealUp2 = {
   show: {
-    y: "0%",
-    opacity: 1,
+    y: "100%",
     rotation: 0.02,
-    zIndex: 10,
     transition: {
       duration: 1,
       ease: "easeInOut",
     },
   },
   hidden: {
-    y: "10%",
-    opacity: 0,
+    y: "0%",
     rotation: 0.02,
-    zIndex: -1,
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+    },
+  },
+};
+export const revealUp3 = {
+  show: {
+    y: "0%",
+    rotation: 0.02,
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+    },
+  },
+  hidden: {
+    y: "80%",
+    rotation: 0.02,
     transition: {
       duration: 1,
       ease: "easeInOut",

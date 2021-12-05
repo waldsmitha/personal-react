@@ -15,19 +15,23 @@ const ShowcaseItem = ({ data }) => {
       variants={popIn}
       initial="hidden"
       animate="show"
+      whileHover={{
+        y: "-3vh",
+        transition: { duration: 0.2 },
+      }}
     >
       <Link to={`/showcase/${data.name}`}>
         <div className="container">
           <div className="website-info">
             <motion.h2 layoutId={`title ${data.name}`}>{data.name}</motion.h2>
             <motion.p layoutId={`type ${data.name}`}>{data.type}</motion.p>
-            <motion.img
-              src={require(`../img/${data.mainImg}`).default}
-              alt="bliss"
-              className="main-img"
-              layoutId={`image-${data.id}`}
-            />
           </div>
+          <motion.img
+            src={require(`../img/${data.mainImg}`).default}
+            alt="bliss"
+            className="main-img"
+            layoutId={`image-${data.id}`}
+          />
         </div>
         {/* <div className="line"></div> */}
       </Link>
@@ -40,60 +44,45 @@ export default ShowcaseItem;
 const SItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 1rem auto;
 
-  img {
-    object-fit: cover;
-  }
   .container {
     box-shadow: rgba(255, 255, 255, 0.15) 0px 3px 8px;
     border-radius: 1rem;
     display: flex;
+    background: #242424;
     flex-direction: column;
-    align-items: center;
-    padding: 1rem;
+    justify-content: space-between;
     margin: 0 1rem 1rem 1rem;
-  }
-
-  .main-img {
-    width: 100%;
-    height: 100%;
-    max-height: 450px;
-    border-radius: 2rem;
-    margin-bottom: 1rem;
+    overflow: hidden;
+    /* min-height: 70vh; */
   }
 
   .website-info {
+    padding: 1rem;
+
     h2 {
       margin-top: 1rem;
       text-transform: uppercase;
+      color: #e48383e5;
+      line-height: 100%;
     }
     p {
       margin: 1rem 0;
       text-transform: uppercase;
     }
   }
-  .website-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-gap: 1rem;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
+  img {
+    min-width: 300px;
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
   }
 
-  .line {
-    width: 75%;
-    margin: 5rem auto;
-    height: 0.1rem;
-    background: #ababab;
-  }
   @media screen and (min-width: 768px) {
     .container {
-      padding: 0 2rem 2rem 2rem;
+      /* padding: 0 2rem 2rem 2rem; */
     }
   }
   @media screen and (min-width: 1000px) {

@@ -17,11 +17,12 @@ import { revealNavMobile, pulse, opacity } from "../animations";
 
 const Home = () => {
   const [navActive, setNavActive] = useState(true);
-
   const [navBarActive, setNavBarActive] = useState(true);
+
   const calcDeltaY = (e) => {
     e.deltaY > 0 ? setNavBarActive(false) : setNavBarActive(true);
   };
+
   const navToggle = () => {
     setNavActive(!navActive);
   };

@@ -61,8 +61,9 @@ a {
 }
 li {
     list-style: none;
+    font-size: 1.25rem;
 }
-p {
+a,p {
     font-size: 1.25rem;
     line-height: 140%;
 }

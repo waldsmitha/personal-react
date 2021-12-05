@@ -57,8 +57,8 @@ const SServiceItem = styled(motion.div)`
       padding: 1rem;
       a {
         padding-top: 1rem;
-        font-size: 1rem;
-        color: #e48383e5;
+        font-size: 1.25rem;
+        color: #2aa2bc;
       }
     }
     .art-images {

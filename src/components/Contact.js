@@ -70,7 +70,11 @@ const SContact = styled(motion.div)`
     textarea {
       width: 100%;
     }
+    button {
+      cursor: pointer;
+    }
   }
+
   .flex-container {
     display: flex;
     width: 100%;

@@ -20,15 +20,15 @@ const Services = () => {
         animate={controls}
         variants={opacity}
       >
-        <div>
+        {/* <div>
           <h2>My Promise</h2>
           <p>
             Whether you are seeking to design a logo, commission a piece of art,
             or build a website, I have the skillset to exceed your expectations
             and deliver something truly beautiful.
           </p>
-        </div>
-        <img src={stock1} alt="stock1" />
+        </div>*/}
+        {/* <img src={stock1} alt="stock1" /> */}
       </motion.div>
       {serviceData.map((item) => (
         <ServicesItem
@@ -52,7 +52,6 @@ const SServices = styled(motion.div)`
     max-width: 1300px;
 
     a {
-      font-size: 1rem;
       margin: 1rem 0;
     }
     h2 {
@@ -64,7 +63,7 @@ const SServices = styled(motion.div)`
       padding: ${theme.spacing.sectionPaddingMobile} 0;
     }
 
-    .mission-statement {
+    /* .mission-statement {
       padding: ${theme.spacing.sectionPaddingMobile} 1rem;
       display: flex;
       flex-direction: column;
@@ -78,6 +77,6 @@ const SServices = styled(motion.div)`
         width: 70%;
         text-transform: none;
       }
-    }
+    } */
   `}
 `;

@@ -10,7 +10,9 @@ import ShowcaseItem from "./ShowcaseItem";
 import { maxWidth } from "../util";
 
 const Showcase = () => {
-  const [filteredData, setFilteredData] = useState(portfolio);
+  const [filteredData, setFilteredData] = useState(
+    portfolio.filter((item) => item.type === "website")
+  );
   const sections = ["website", "design", "art", "all"];
   const location = useLocation();
   const currentPath = location.pathname.split("/")[2];
@@ -95,7 +97,7 @@ const SShowcase = styled(motion.div)`
     }
   }
 
-  .pieces {
+  /* .pieces {
     ${maxWidth}
     margin: 0 auto;
     display: flex;
@@ -104,7 +106,15 @@ const SShowcase = styled(motion.div)`
 
     & > * {
       flex: 1 1 300px;
+      margin: 1rem;
     }
+  } */
+  .pieces {
+    ${maxWidth}
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-column-gap: 2rem;
   }
   .showcase-filter {
     display: flex;
@@ -129,7 +139,6 @@ const SShowcase = styled(motion.div)`
     .line {
       height: 0.05rem;
       margin: 0.5rem;
-      margin-top: 0rem;
       width: 10%;
       background: #f2f2f2;
     }
