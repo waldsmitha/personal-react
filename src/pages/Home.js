@@ -14,6 +14,7 @@ import About from "../components/About";
 import Footer from "../components/Footer";
 import MobileNav from "../components/MobileNav";
 import { revealNavMobile, pulse, opacity } from "../animations";
+import Contact from "../components/Contact";
 
 const Home = () => {
   const [navActive, setNavActive] = useState(true);
@@ -49,6 +50,7 @@ const Home = () => {
           <Services />
           <Showcase />
           <About />
+          <Contact />
           <Footer />
         </motion.div>
         <SMobileNav
@@ -65,7 +67,7 @@ const Home = () => {
           id="nav-icon"
           onClick={() => navToggle()}
         >
-          Nav
+          NAV
         </motion.button>
       </SHome>
     </div>
@@ -84,7 +86,7 @@ const SHome = styled(motion.div)`
     background: #131313;
     color: #ababab;
     border-radius: 50%;
-    border: 3px solid #2aa2bc;
+    border: 3px solid #4ec0d4;
     z-index: 20;
     @media screen and (min-width: 768px) {
       display: none;

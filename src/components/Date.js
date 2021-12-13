@@ -44,11 +44,11 @@ const CurrentDate = () => {
 
   return (
     <SDate>
-      <div>{currentDayName}</div>
-      <div>
+      <p>{currentDayName}</p>
+      <p>
         {currentMonth} {currentDay}
-      </div>
-      <div>{currentYear}</div>
+      </p>
+      <p>{currentYear}</p>
     </SDate>
   );
 };

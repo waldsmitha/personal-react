@@ -21,7 +21,7 @@ export const revealNavMobile = {
 };
 export const revealNavBar = {
   show: {
-    y: "10px",
+    y: "0px",
     opacity: 1,
     rotation: 0.02,
     zIndex: 10,
@@ -31,7 +31,7 @@ export const revealNavBar = {
     },
   },
   hidden: {
-    y: "0",
+    y: "-10px",
     opacity: 0,
     rotation: 0.02,
     zIndex: -1,
@@ -276,5 +276,18 @@ export const popIn = {
     opacity: 0,
     scale: 0.5,
     transition: { duration: 0.75 },
+  },
+};
+
+export const moveHalfDown = {
+  hidden: {
+    top: 0,
+  },
+  show: {
+    top: "45%",
+    transition: {
+      delay: 0.5,
+      duration: 1,
+    },
   },
 };

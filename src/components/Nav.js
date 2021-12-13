@@ -21,6 +21,7 @@ const SNav = styled(motion.nav)`
     ${flex}
     width: 100%;
     padding: 2rem 0;
+
     .nav-links {
       ul {
         ${flex}

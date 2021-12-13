@@ -29,7 +29,7 @@ body {
     font-family: 'Poppins', sans-serif;
     width: 100%;
     background: #131313;
-    color: #ababab;
+    color: #cfcfb1;
 }
 
 
@@ -52,19 +52,15 @@ a,li,p {
 }
 a {
     text-decoration: none;
-    color: #ababab;
+    /* color: #ababab; */
     transition: 0.2s;
-        &:hover {
-          color: #2aa2bc;
-        }
-
 }
 li {
     list-style: none;
-    font-size: 1.25rem;
+    font-size: .8rem;
 }
 a,p {
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 140%;
 }
 
@@ -88,7 +84,7 @@ a,p {
       font-size: 6rem;
   }
   h2 {
-      font-size:4rem;
+      font-size:3rem;
   }
   h3 {
     font-size: 2rem;

@@ -28,9 +28,9 @@ const Header = ({ navActive, setNavActive, navBarActive }) => {
         desktop={true}
       />
       <div className="logo-right">
-        <h3>
+        {/* <h3>
           <span>abw</span>
-        </h3>
+        </h3> */}
       </div>
     </SHeader>
   );
@@ -45,17 +45,26 @@ const SHeader = styled(motion.div)`
   justify-content: space-between;
   align-items: center;
   display: flex;
-  padding-top: 1rem;
-  width: 100vw;
+  padding: 1rem 0;
+  width: 100%;
+
+  /* mix-blend-mode: difference; */
 
   .logo-left,
   .logo-right {
     font-weight: 300;
+
     h3 {
       text-transform: uppercase;
       font-size: 1rem;
+      /* color: #cfcfb1; */
+      color: whitesmoke;
+      /* border: 1px solid #cfcfb1; */
+      border: 1px solid whitesmoke;
+
       span {
-        border: 1px solid #ababab;
+        border: 1px solid #131313;
+        padding: 0.1rem;
       }
     }
   }
@@ -65,8 +74,7 @@ const SHeader = styled(motion.div)`
   .logo-right {
     margin-right: 1rem;
     span {
-      background: #ababab;
-      color: #131313;
+      /* background: #ababab; */
     }
   }
 
@@ -82,16 +90,19 @@ const SHeader = styled(motion.div)`
     li {
       padding: 0 0.5rem;
     }
+    a {
+      color: #131313;
+    }
   }
-  button {
-    border-radius: 0;
-    background: #ababab;
-    border: none;
-    height: 1rem;
-    width: 1rem;
-    transform: rotate(45deg);
-  }
+
   @media screen and (min-width: 768px) {
+    background: whitesmoke;
+    .logo-left,
+    .logo-right {
+      h3 {
+        color: #131313;
+      }
+    }
     ul {
       display: flex;
     }

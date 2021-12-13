@@ -5,8 +5,9 @@ import { useScroll } from "./UseScroll";
 import { revealRight } from "../animations";
 //Media
 
-const ServicesItem = ({ header, body, images }) => {
+const ServicesItem = ({ data }) => {
   const [element, controls] = useScroll();
+  const { link, header, body } = data;
 
   return (
     <SServiceItem>
@@ -17,19 +18,10 @@ const ServicesItem = ({ header, body, images }) => {
         animate={controls}
         variants={revealRight}
       >
-        <div className="art-info">
-          <h2>{header}</h2>
-          <p>{body}</p>
-          <a href="#portfolio">See Past Projects</a>
-        </div>
-        <div className="art-images">
-          {images.map((image, i) => (
-            <img
-              src={require(`../img/${image}`).default}
-              key={`service ${image} ${i}`}
-              alt=""
-            />
-          ))}
+        <h2>{header}</h2>
+        <p>{body}</p>
+        <div className="link">
+          <a href="#portfolio">{link}</a>
         </div>
       </motion.div>
     </SServiceItem>
@@ -42,23 +34,33 @@ const SServiceItem = styled(motion.div)`
   margin: 0 auto;
 
   h2 {
-    color: #2aa2bc;
+    color: #4ec0d4;
     padding-bottom: 1rem;
+    line-height: 120%;
   }
 
   .art-service {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 1rem;
+    height: 100%;
+    .link {
+      padding-top: 2rem;
+      margin-top: auto;
+      align-self: flex-start;
+    }
+    a {
+      color: #4ec0d4;
+      border: 2px solid #4ec0d4;
+      padding: 0.2rem 1.5rem;
+      border-radius: 1rem;
 
-    .art-info {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 20rem;
-      padding: 1rem;
-      a {
-        padding-top: 1rem;
-        font-size: 1.25rem;
-        color: #2aa2bc;
+      &:hover {
+        background: #2aa2bc;
+        border-color: #2aa2bc;
+        color: #131313;
       }
     }
     .art-images {
@@ -92,23 +94,5 @@ const SServiceItem = styled(motion.div)`
 
   @media screen and (min-width: 768px) {
     padding: 0 2rem;
-    .art-service {
-      flex-direction: row;
-
-      .art-info {
-        padding-right: 5rem;
-
-        a {
-          margin-top: auto;
-          text-align: right;
-        }
-      }
-      .art-images {
-        justify-content: flex-end;
-      }
-    }
-    .mission-statement {
-      flex-direction: row;
-    }
   }
 `;

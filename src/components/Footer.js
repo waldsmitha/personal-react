@@ -2,20 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { flex } from "../util";
-//Media
-import email from "../img/email-bl.svg";
-import insta from "../img/insta-bl.svg";
-import twitter from "../img/twitter-bl.svg";
+
 const Footer = () => {
   return (
     <SFooter align="center" direction="column" justify="center">
       <p>&#169; Austin Waldsmith. All rights reserved.</p>
       <p>austin.waldsmith@gmail.com</p>
-      <div className="social-media-icons">
-        <img src={email} alt="" />
-        <img src={insta} alt="" />
-        <img src={twitter} alt="" />
-      </div>
     </SFooter>
   );
 };
@@ -28,8 +20,8 @@ const SFooter = styled(motion.div)`
     ${flex}
 
     min-height: 20vh;
-    background: ${theme.color.secondary};
-    color: ${theme.color.background};
+    background: #131313;
+    color: #cfcfb1;
 
     p {
       font-size: 1rem;

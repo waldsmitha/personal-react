@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const ShowcaseItem = ({ data }) => {
   //   const [element, controls] = useScroll();
+  const { name, type, mainImg, id } = data;
 
   return (
     <SItem
@@ -20,20 +21,19 @@ const ShowcaseItem = ({ data }) => {
         transition: { duration: 0.2 },
       }}
     >
-      <Link to={`/showcase/${data.name}`}>
+      <Link to={`/showcase/${name}`}>
         <div className="container">
           <div className="website-info">
-            <motion.h2 layoutId={`title ${data.name}`}>{data.name}</motion.h2>
-            <motion.p layoutId={`type ${data.name}`}>{data.type}</motion.p>
+            <motion.h2 layoutId={`title ${name}`}>{name}</motion.h2>
+            <motion.p layoutId={`type ${name}`}>{type}</motion.p>
           </div>
           <motion.img
-            src={require(`../img/${data.mainImg}`).default}
+            src={require(`../img/${mainImg}`).default}
             alt="bliss"
             className="main-img"
-            layoutId={`image-${data.id}`}
+            layoutId={`image-${id}`}
           />
         </div>
-        {/* <div className="line"></div> */}
       </Link>
     </SItem>
   );
@@ -56,7 +56,6 @@ const SItem = styled(motion.div)`
     justify-content: space-between;
     margin: 0 1rem 1rem 1rem;
     overflow: hidden;
-    /* min-height: 70vh; */
   }
 
   .website-info {
@@ -64,13 +63,14 @@ const SItem = styled(motion.div)`
 
     h2 {
       margin-top: 1rem;
-      text-transform: uppercase;
-      color: #e48383e5;
+      text-transform: capitalize;
+      color: #4ec0d4;
       line-height: 100%;
     }
     p {
       margin: 1rem 0;
       text-transform: uppercase;
+      color: #cfcfb1;
     }
   }
   img {

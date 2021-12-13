@@ -50,6 +50,7 @@ const SMobileNav = styled(motion.div)`
   }
   a {
     font-size: 1.25rem;
+    color: #4ec0d4;
   }
 `;
 export default MobileNav;

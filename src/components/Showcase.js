@@ -45,11 +45,9 @@ const Showcase = () => {
     <SShowcase id="portfolio">
       <AnimateSharedLayout type="crossfade">
         <header>
-          <h1>showcase</h1>
+          <h1>portfolio</h1>
         </header>
-        <div className="line-design"></div>
         <div className="showcase-filter">
-          <h3>Category</h3>
           <div className="line"></div>
           <ul>
             {sections.map((item) => (
@@ -84,7 +82,7 @@ export default Showcase;
 
 const SShowcase = styled(motion.div)`
   header {
-    background: #cf7878;
+    background: #cfcfb1;
     width: 100vw;
     text-align: center;
     padding: 2rem;
@@ -92,23 +90,11 @@ const SShowcase = styled(motion.div)`
       text-transform: uppercase;
       font-size: clamp(3.5rem, 15vw, 10rem);
       line-height: 100%;
-      font-weight: 300;
+      font-weight: 600;
       color: #131313;
     }
   }
 
-  /* .pieces {
-    ${maxWidth}
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    & > * {
-      flex: 1 1 300px;
-      margin: 1rem;
-    }
-  } */
   .pieces {
     ${maxWidth}
     margin: 0 auto;
@@ -124,23 +110,22 @@ const SShowcase = styled(motion.div)`
     padding: 2rem;
 
     ul {
+      padding-top: 1rem;
       display: flex;
       list-style: none;
     }
     li {
       padding: 0 0.75rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       transition: 0.2s;
       text-transform: capitalize;
       cursor: pointer;
+      border-top: 1px solid #4ec0d4;
+      border-bottom: 1px solid #4ec0d4;
       &:hover {
-        color: #e48383e5;
+        color: #4ec0d4;
       }
-    }
-    .line {
-      height: 0.05rem;
-      margin: 0.5rem;
-      width: 10%;
-      background: #f2f2f2;
     }
   }
 `;
