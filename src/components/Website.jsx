@@ -1,17 +1,16 @@
-import React from "react";
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 // import { useScroll } from "./UseScroll";
 import { popIn } from "../animations";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Website = ({ setPathId, itemDetail }) => {
   const { name, description, link, type, mainImg, gallery, id } = itemDetail[0];
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const setPath = () => {
-    history.push("");
+    navigate("/");
     setPathId(null);
   };
 
@@ -30,7 +29,7 @@ const Website = ({ setPathId, itemDetail }) => {
             {type}
           </motion.p>
           <motion.img
-            src={require(`../img/${mainImg}`).default}
+            src={mainImg}
             alt="bliss"
             className={type === "website" ? "main-img-website" : "main-img"}
             layoutId={`image-${id}`}
@@ -46,11 +45,7 @@ const Website = ({ setPathId, itemDetail }) => {
         </div>
         <div className="website-gallery">
           {gallery.map((image, i) => (
-            <img
-              src={require(`../img/${image}`).default}
-              key={`${image}${i}`}
-              alt={image}
-            />
+            <img src={image} key={`${image}${i}`} alt={"gallery image"} />
           ))}
         </div>
       </div>
@@ -66,7 +61,7 @@ const SWebsite = styled(motion.div)`
   left: 0;
   width: 100%;
   min-height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 0 auto;
   background: #131313;
   z-index: 100;
@@ -91,8 +86,6 @@ const SWebsite = styled(motion.div)`
   }
   .container {
     width: 90%;
-    margin: 2rem 0;
-    padding-bottom: 2rem;
     border-radius: 1rem;
     background: whitesmoke;
     /* color: #131313; */
@@ -147,6 +140,7 @@ const SWebsite = styled(motion.div)`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 1rem;
+    padding-bottom: 24px;
 
     img {
       object-fit: cover;
@@ -168,11 +162,6 @@ const SWebsite = styled(motion.div)`
     }
   }
 
-  @media screen and (min-width: 768px) {
-    .container {
-      padding: 0 2rem 2rem 2rem;
-    }
-  }
   @media screen and (min-width: 1000px) {
     .container {
       /* padding: 10vh 0; */

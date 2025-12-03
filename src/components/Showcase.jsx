@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
-import { portfolio } from "../data";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { portfolio } from "../data";
 
 //Components
-import Website from "./Website";
+import { Typography } from "@mui/material";
 import ShowcaseItem from "./ShowcaseItem";
-import { maxWidth } from "../util";
+import Website from "./Website";
 
 const Showcase = () => {
-  const [filteredData, setFilteredData] = useState(
-    portfolio.filter((item) => item.type === "website")
-  );
-  const sections = ["website", "design", "art", "all"];
+  const [filteredData, setFilteredData] = useState(portfolio);
+  const sections = ["website", "art", "all"];
   const location = useLocation();
   const currentPath = location.pathname.split("/")[2];
   const [itemDetail, setItemDetail] = useState(null);
@@ -28,11 +26,15 @@ const Showcase = () => {
   };
 
   const updateItemDetail = () => {
+    const body = document.querySelector("body");
+
     if (currentPath) {
-      let filteredPort = portfolio.filter((item) => item.name === currentPath);
+      let filteredPort = portfolio.filter((item) => item.id === currentPath);
       setItemDetail(filteredPort);
+      body.style.overflow = "hidden";
     } else {
       setItemDetail("");
+      body.style.overflow = "auto";
     }
   };
 
@@ -43,9 +45,13 @@ const Showcase = () => {
 
   return (
     <SShowcase id="portfolio">
-      <AnimateSharedLayout type="crossfade">
+      <LayoutGroup type="crossfade">
         <header>
           <h1>portfolio</h1>
+          <Typography variant="h5" color="error" sx={{ fontWeight: "bold" }}>
+            DISCLAIMER: Portfolio is in the process of being updated. Current
+            Items are 4 years old.
+          </Typography>
         </header>
         <div className="showcase-filter">
           <div className="line"></div>
@@ -73,7 +79,7 @@ const Showcase = () => {
             ))}
           </AnimatePresence>
         </div>
-      </AnimateSharedLayout>
+      </LayoutGroup>
     </SShowcase>
   );
 };
@@ -81,9 +87,10 @@ const Showcase = () => {
 export default Showcase;
 
 const SShowcase = styled(motion.div)`
+  margin-top: 250px;
+  padding-top: 40px;
   header {
     background: #cfcfb1;
-    width: 100vw;
     text-align: center;
     padding: 2rem;
     h1 {
@@ -96,11 +103,12 @@ const SShowcase = styled(motion.div)`
   }
 
   .pieces {
-    ${maxWidth}
+    max-width: 1300px;
+    padding: 48px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-column-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-column-gap: 4rem;
   }
   .showcase-filter {
     display: flex;

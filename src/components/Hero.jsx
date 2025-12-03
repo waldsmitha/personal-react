@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
 import { motion } from "framer-motion";
-import CurrentDate from "./Date";
+import styled from "styled-components";
 import { revealUp, stagger } from "../animations";
-import downarrow from "../img/down-arrow.svg";
+import downarrow from "../assets/down-arrow.svg";
+import CurrentDate from "./Date";
 
 const Hero = () => {
   return (
@@ -61,14 +60,25 @@ const Hero = () => {
           <div className="no-overflow">
             <motion.div className="skills" variants={revealUp}>
               <ul>
+                <li>Next.js</li>
+                <li>React</li>
+                <li>TypeScript</li>
                 <li>javascript</li>
-                <li>css/sass</li>
-                <li>wordpress</li>
+                <li>Python</li>
+                <li>Node.js</li>
+                <li>HTML</li>
               </ul>
               <ul>
-                <li>react</li>
-                <li>html</li>
-                <li>webflow</li>
+                <li>css/sass</li>
+                <li>Mui</li>
+                <li>TailwindCSS</li>
+                <li>Figma</li>
+              </ul>
+              <ul>
+                <li>Google Cloud</li>
+                <li>Git</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
               </ul>
             </motion.div>
           </div>
@@ -96,6 +106,8 @@ export default Hero;
 
 const SHero = styled(motion.div)`
   text-transform: uppercase;
+  height: 95vh;
+  padding-top: 5vh;
 
   img {
     margin: 0 auto;
@@ -121,6 +133,12 @@ const SHero = styled(motion.div)`
       padding: 1rem 0;
     }
   }
+  .skills,
+  .services {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
   header {
     display: flex;
     justify-content: space-between;
@@ -139,7 +157,7 @@ const SHero = styled(motion.div)`
     h1 {
       padding: 0;
       margin: 0;
-      font-size: 3rem;
+      font-size: 2rem;
       font-style: italic;
       color: #4ec0d4;
       line-height: 120%;
@@ -173,11 +191,11 @@ const SHero = styled(motion.div)`
   }
   @media screen and (min-width: 1300px) {
     h1 {
-      font-size: 7rem;
+      font-size: 6rem;
     }
     .cta {
       h1 {
-        font-size: 4rem;
+        font-size: 3rem;
       }
     }
   }

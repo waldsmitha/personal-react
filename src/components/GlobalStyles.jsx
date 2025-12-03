@@ -25,9 +25,7 @@ html {
 }
 
 body {
-    /* font-family: 'Lora', serif; */
     font-family: 'Poppins', sans-serif;
-    width: 100%;
     background: #131313;
     color: #cfcfb1;
 }

@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 // import { useScroll } from "./UseScroll";
 import { popIn } from "../animations";
 
@@ -21,14 +20,14 @@ const ShowcaseItem = ({ data }) => {
         transition: { duration: 0.2 },
       }}
     >
-      <Link to={`/showcase/${name}`}>
+      <Link to={`/showcase/${id}`} style={{ width: "100%" }}>
         <div className="container">
           <div className="website-info">
             <motion.h2 layoutId={`title ${name}`}>{name}</motion.h2>
             <motion.p layoutId={`type ${name}`}>{type}</motion.p>
           </div>
           <motion.img
-            src={require(`../img/${mainImg}`).default}
+            src={mainImg}
             alt="bliss"
             className="main-img"
             layoutId={`image-${id}`}
@@ -54,7 +53,6 @@ const SItem = styled(motion.div)`
     background: #242424;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0 1rem 1rem 1rem;
     overflow: hidden;
   }
 

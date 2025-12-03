@@ -1,7 +1,5 @@
-import React from "react";
-
 const NavLinks = ({ navActive, setNavActive, desktop }) => {
-  const links = ["home", "services", "portfolio", "about", "contact"];
+  const links = ["home", "portfolio", "about", "experience"];
   const navToggle = () => {
     if (!desktop) setNavActive(!navActive);
   };

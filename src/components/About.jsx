@@ -1,9 +1,11 @@
-import React from "react";
-import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import { useScroll } from "./UseScroll";
-import downarrow from "../img/down-arrow.svg";
+import styled, { css } from "styled-components";
 import { revealUp2 } from "../animations";
+import { useScroll } from "./UseScroll";
+
+import { Box, Stack } from "@mui/material";
+
+import DownArrow from "../assets/down-arrow.svg";
 
 const About = () => {
   const [element2, controls2] = useScroll();
@@ -12,51 +14,43 @@ const About = () => {
 
   return (
     <SAbout id="about">
-      <header>
-        <div className="container">
-          <h1>Boston-based freelance</h1>
-          <motion.div
-            className="reveal"
-            ref={element2}
-            initial="hidden"
-            animate={controls2}
-            variants={revealUp2}
-          ></motion.div>
-        </div>
-        <div className="container">
-          <h1>designer with an</h1>
-          <motion.div
-            className="reveal"
-            ref={element3}
-            initial="hidden"
-            animate={controls3}
-            variants={revealUp2}
-          ></motion.div>
-        </div>
-        <div className="container">
-          <h1>emphasis on style & branding.</h1>
-          <motion.div
-            className="reveal"
-            ref={element4}
-            initial="hidden"
-            animate={controls4}
-            variants={revealUp2}
-          ></motion.div>
-        </div>
-        <div className="container cta">
-          <h1> Let's work together.</h1>
-          <motion.div
-            className="reveal"
-            ref={element4}
-            initial="hidden"
-            animate={controls4}
-            variants={revealUp2}
-          ></motion.div>
-        </div>
-      </header>
-      <div className="arrow">
-        <img src={downarrow} alt="" />
-      </div>
+      <Stack alignSelf="center" sx={{ gap: 10 }}>
+        <Box>
+          <div className="container">
+            <h2>Boston-origin, Atlanta-based.</h2>
+            <motion.div
+              className="reveal"
+              ref={element2}
+              initial="hidden"
+              animate={controls2}
+              variants={revealUp2}
+            ></motion.div>
+          </div>
+          <div className="container">
+            <h2>Developer, designer, and artist.</h2>
+            <motion.div
+              className="reveal"
+              ref={element3}
+              initial="hidden"
+              animate={controls3}
+              variants={revealUp2}
+            ></motion.div>
+          </div>
+          <div className="container cta">
+            <h2>Check out my professional experience below.</h2>
+            <motion.div
+              className="reveal"
+              ref={element4}
+              initial="hidden"
+              animate={controls4}
+              variants={revealUp2}
+            ></motion.div>
+          </div>
+        </Box>
+        <Box className="arrow">
+          <img src={DownArrow} alt="down arrow" width={100} height={100} />
+        </Box>
+      </Stack>
     </SAbout>
   );
 };
@@ -71,6 +65,9 @@ const SAbout = styled(motion.div)`
     padding-bottom: ${paddingVert};
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    margin-top: 100px;
 
     header {
       margin: ${paddingVert} auto;
@@ -83,8 +80,8 @@ const SAbout = styled(motion.div)`
 
       h1 {
         font-size: clamp(70px, 15vw, 144px);
-        padding-bottom: 2rem;
-        line-height: 110%;
+        padding-bottom: 0.75rem;
+        line-height: 100%;
       }
     }
     .arrow {

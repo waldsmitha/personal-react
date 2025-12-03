@@ -1,14 +1,9 @@
-import React from "react";
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 import { revealNavBar } from "../animations";
 import NavLinks from "./NavLinks";
 
 const Header = ({ navActive, setNavActive, navBarActive }) => {
-  // const navToggle = () => {
-  //   setNavActive(!navActive);
-  // };
-
   return (
     <SHeader
       variants={revealNavBar}
@@ -42,11 +37,14 @@ const SHeader = styled(motion.div)`
   display: flex;
   position: fixed;
   top: 0;
+  left: 0;
   justify-content: space-between;
   align-items: center;
   display: flex;
   padding: 1rem 0;
+  max-width: 100vw;
   width: 100%;
+  height: 5vh;
 
   /* mix-blend-mode: difference; */
 
