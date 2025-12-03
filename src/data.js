@@ -3,7 +3,7 @@ import SageGardenAboutImg from "./assets/sage/about.png";
 import SageGardenHomeImg from "./assets/sage/home.png";
 import SageGardenServicesImg from "./assets/sage/services.png";
 
-import CorgiImg from "./assets/corgi.png";
+import CorgiImg from "./assets/corgi.PNG";
 import FatesImg from "./assets/fates.jpg";
 import HeroImg from "./assets/Hero.png";
 import JimiImg from "./assets/jimi.png";
