@@ -1,0 +1,35 @@
+.art-gallery { position: absolute; z-index: 2; inset: 0; overflow: hidden; color: #fff; background: #111; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.65s, visibility 0s 0.65s; }
+.view-artist .art-gallery { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 0.85s 1.05s, visibility 0s 1.05s; }
+.art-gallery::after { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(#0009, transparent 38%, transparent 70%, #000b); pointer-events: none; }
+.gallery-pulse, .gallery-atmosphere { position: absolute; inset: 0; }
+.gallery-atmosphere { overflow: hidden; background-color: var(--ground); }
+.atmosphere-wash { background: radial-gradient(ellipse at 5% 28%, var(--light-one), transparent 67%), radial-gradient(ellipse at 100% 68%, var(--light-two), transparent 75%), var(--ground); }
+.atmosphere-wash::before { content: ''; position: absolute; inset: -20%; background: linear-gradient(115deg, transparent 30%, var(--light-two) 48%, transparent 66%); filter: blur(70px); opacity: 0.75; }
+.atmosphere-portal { background: linear-gradient(110deg, var(--ground) 8%, var(--light-two) 50%, var(--ground) 95%); }
+.atmosphere-portal::before { content: ''; position: absolute; inset: 19% 19% 12%; background: linear-gradient(120deg, var(--light-one), var(--ground) 62%, var(--light-two)); border: 2px solid var(--light-one); box-shadow: 0 0 65px var(--light-one), inset 0 0 90px var(--light-two); transform: perspective(1000px) rotateY(-9deg); }
+.atmosphere-portal::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 0 100%, var(--light-one), transparent 55%); opacity: 0.65; }
+.atmosphere-spotlight { background: radial-gradient(ellipse 38% 55% at 50% 50%, var(--light-one), transparent 85%), radial-gradient(ellipse 35% 65% at 96% 80%, var(--light-two), transparent 85%), var(--ground); }
+.atmosphere-spotlight::before { content: ''; position: absolute; inset: 0; background: conic-gradient(from 155deg at 50% -30%, transparent 0deg, var(--light-one) 16deg, transparent 33deg); opacity: 0.25; filter: blur(25px); }
+.gallery-stage { position: absolute; z-index: 2; inset: clamp(215px, 27vh, 300px) 12% 96px; }
+.gallery-art { position: absolute; inset: 0; margin: 0; display: flex; justify-content: center; align-items: center; }
+.gallery-art img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 24px 45px #0008); }
+.gallery-navigation { position: absolute; z-index: 3; top: 102px; left: 36px; right: 36px; display: flex; justify-content: space-between; gap: 5%; }
+.gallery-navigation button { width: 45%; text-align: left; font: 600 clamp(68px, 11.5vw, 184px)/0.82 'Barlow Condensed', sans-serif; letter-spacing: -0.025em; transition: letter-spacing 0.3s, font-weight 0.3s; }
+.gallery-navigation button:last-child { text-align: right; }
+.gallery-navigation button:hover, .gallery-navigation button:focus-visible { opacity: 1; font-weight: 700; letter-spacing: 0.075em; }
+.gallery-footer { position: absolute; z-index: 3; bottom: 28px; left: 36px; right: 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: end; gap: 18px; font-size: 12px; }
+.gallery-footer > button { justify-self: start; padding: 8px 0; }
+.gallery-caption { text-align: center; }
+.gallery-caption h3 { margin: 0 0 6px; font: 600 25px/1 'Barlow Condensed', sans-serif; text-transform: uppercase; }
+.gallery-caption span { opacity: 0.7; }
+.gallery-category { justify-self: end; letter-spacing: 0.1em; }
+.art-in { animation: artwork-in 0.85s cubic-bezier(0.2,0.75,0.2,1) both; }
+.art-out { animation: artwork-out 0.4s ease-in both; }
+.atmosphere-in { animation: atmosphere-in 0.95s ease-out both; }
+.atmosphere-out { animation: atmosphere-out 0.8s ease-out both; }
+@keyframes artwork-in { 0% { opacity: 0; transform: scale(0.9); } 35% { opacity: 0.8; } 72% { opacity: 1; transform: scale(1.018); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes artwork-out { to { opacity: 0; transform: scale(1.07); } }
+@keyframes atmosphere-in { 0% { opacity: 0; transform: scale(1.15); filter: brightness(1.35); } 60% { opacity: 1; transform: scale(0.995); filter: brightness(1.1); } 100% { opacity: 1; transform: scale(1); filter: brightness(1); } }
+@keyframes atmosphere-out { to { opacity: 0; transform: scale(1.1); } }
+.gallery-still .art-in, .gallery-still .atmosphere-in { animation: none; }
+.gallery-still .art-out, .gallery-still .atmosphere-out { display: none; }
