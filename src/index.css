@@ -278,7 +278,7 @@ button:hover {
   text-align: center;
   font-family: "Barlow Condensed", Impact, sans-serif;
   font-weight: 700;
-  font-size: 22.8vw;
+  font-size: 18vw;
   letter-spacing: -0.035em;
   line-height: 0.9;
   white-space: nowrap;
@@ -287,6 +287,7 @@ button:hover {
   transition:
     opacity 0.4s,
     transform 0.4s;
+  z-index: 1;
 }
 .view-box .box-title {
   opacity: 1;
@@ -748,7 +749,7 @@ button:hover {
   }
   .box-title {
     top: 32%;
-    font-size: 23vw;
+    font-size: 19vw;
     left: 2%;
     right: 2%;
   }

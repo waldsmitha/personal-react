@@ -305,13 +305,14 @@ export default function App() {
               An all-in-one document viewing platform built around security,
               accessibility, and leak traceability.
             </p>
-            <form className="box-black-email-signup">
+            {/* <form className="box-black-email-signup">
               <label htmlFor="box-black-email-signup-input">
                 Enter your email for updates.
               </label>
               <input id="box-black-email-signup-input" type="email"></input>
               <button type="submit">Submit</button>
-            </form>
+            </form> */}
+            <p>Coming Soon.</p>
             <span>
               Secure documents. Accessible to all. Leaks traced to the source.
             </span>
