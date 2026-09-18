@@ -126,21 +126,27 @@ export function createExperience(
   const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: true,
-    alpha: false,
+    alpha: true,
     powerPreference: "high-performance",
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color("#080808");
+  const background = new THREE.Color("#080808");
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 60);
   const texture = globeTexture(renderer);
   onProgress();
   const globe = new THREE.Mesh(
     new THREE.SphereGeometry(3.25, 160, 112),
-    new THREE.MeshBasicMaterial({ map: texture, toneMapped: false }),
+    new THREE.MeshBasicMaterial({
+      map: texture,
+      toneMapped: false,
+      transparent: true,
+    }),
   );
+  const projectHover = { value: new THREE.Vector2() };
+  const projectTarget = new THREE.Vector2();
   const hoverBands = bands
     .filter((band) => band.action || band.info)
     .map((band) => ({
@@ -149,11 +155,12 @@ export function createExperience(
       target: 0,
     }));
   globe.material.onBeforeCompile = (shader) => {
+    shader.uniforms.projectHover = projectHover;
     shader.uniforms.hoverBands = {
       value: hoverBands.map((band) => band.value),
     };
     shader.fragmentShader =
-      `uniform vec3 hoverBands[${hoverBands.length}];\n${shader.fragmentShader}`.replace(
+      `uniform vec2 projectHover;\nuniform vec3 hoverBands[${hoverBands.length}];\n${shader.fragmentShader}`.replace(
         "#include <map_fragment>",
         `
       #include <map_fragment>
@@ -167,6 +174,9 @@ export function createExperience(
       float ink = 1.0 - smoothstep(0.03, 0.65, dot(diffuseColor.rgb, vec3(0.3333)));
       vec3 inverted = mix(vec3(0.004), vec3(0.776, 0.730, 0.610), ink);
       diffuseColor.rgb = mix(diffuseColor.rgb, inverted, hoverAmount);
+      diffuseColor.rgb = mix(diffuseColor.rgb, mix(vec3(0.004), vec3(1.0), ink), projectHover.x);
+      diffuseColor.rgb = mix(diffuseColor.rgb, vec3(1.0), projectHover.y);
+      diffuseColor.a *= mix(1.0, smoothstep(0.35, 0.65, ink), projectHover.y);
     `,
       );
   };
@@ -210,6 +220,7 @@ export function createExperience(
   let firstFrame = true;
   let activeInfo = null;
   let targetTilt = 0;
+  let cubePreview = null;
   const scrollSurface = canvas.parentElement;
 
   function resize() {
@@ -325,6 +336,10 @@ export function createExperience(
         ? band.target
         : THREE.MathUtils.damp(band.value.z, band.target, 12, delta);
     });
+    projectHover.value.lerp(
+      projectTarget,
+      motionPreference.matches ? 1 : 1 - Math.exp(-7 * delta),
+    );
     if (!paused) {
       activeTime += delta;
       // Negative Y rotation carries the front-facing text to the viewer's left.
@@ -350,8 +365,17 @@ export function createExperience(
     globe.visible = progress < 0.54;
     cube.visible = activeScene === "box" && progress >= 0.54;
     cube.position.y = 0.12 + (paused ? 0 : Math.sin(activeTime * 0.55) * 0.07);
-    scene.background.copy(black).lerp(white, smooth(0.18, 0.54, progress));
+    scene.background =
+      progress > 0
+        ? background
+            .copy(black)
+            .lerp(
+              white,
+              destination === "box" ? 1 : smooth(0.18, 0.54, progress),
+            )
+        : null;
     renderer.render(scene, camera);
+
     if (firstFrame) {
       firstFrame = false;
       onProgress();

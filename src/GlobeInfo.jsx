@@ -50,7 +50,7 @@ const skills = [
 
 const statements = {
   artist: "View portfolio.",
-  box: "Box Black: A new kind of secure document viewer.",
+  box: "A new kind of secure document viewer.",
 };
 
 export default function GlobeInfo({
@@ -110,13 +110,9 @@ export default function GlobeInfo({
       </div>
       {statements[section] && (
         <div className="info-mask">
-          <Motion.h2
-            className="info-statement"
-            variants={reveal}
-            transition={transition}
-          >
-            {statements[section]}
-          </Motion.h2>
+          <Motion.div variants={reveal} transition={transition}>
+            <h2 className="info-statement">{statements[section]}</h2>
+          </Motion.div>
         </div>
       )}
       {section === "experience" &&

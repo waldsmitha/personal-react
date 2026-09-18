@@ -181,6 +181,7 @@ export default function App() {
   return (
     <main
       className={`experience view-${view} ${ready ? "is-ready" : ""} ${failed ? "has-fallback" : ""}`}
+      data-info={view === "globe" ? info : undefined}
     >
       <canvas ref={canvasRef} className="scene" aria-hidden="true" />
 
@@ -200,11 +201,12 @@ export default function App() {
         <div className="globe-sidebar">
           <header className="masthead" inert={!ready && !failed}>
             <div className="identity" aria-hidden={view !== "globe"}>
-              Austin Waldsmith <br />
+              <span className="identity-name">AUSTIN WALDSMITH</span>
               <span className="identity-subheader">
                 Senior full-stack engineer with an eye for design.
               </span>
             </div>
+
             <button
               className="motion-control"
               onClick={() => setPaused(!paused)}
@@ -227,17 +229,6 @@ export default function App() {
           </AnimatePresence>
 
           <div className="project-entry">
-            <button
-              ref={enterRef}
-              className="enter-project"
-              onFocus={() => experienceRef.current?.highlight("box")}
-              onBlur={() => experienceRef.current?.highlight(null)}
-              onMouseEnter={() => experienceRef.current?.highlight("box")}
-              onMouseLeave={() => experienceRef.current?.highlight(null)}
-              onClick={() => navigate("box")}
-            >
-              BOX BLACK <span aria-hidden="true">↗</span>
-            </button>
             <nav className="profile-navigation" aria-label="About Austin">
               {["experience", "skills"].map((item) => (
                 <button
@@ -256,6 +247,17 @@ export default function App() {
                 </button>
               ))}
             </nav>
+            <button
+              ref={enterRef}
+              className="enter-project"
+              onFocus={() => experienceRef.current?.highlight("box")}
+              onBlur={() => experienceRef.current?.highlight(null)}
+              onMouseEnter={() => experienceRef.current?.highlight("box")}
+              onMouseLeave={() => experienceRef.current?.highlight(null)}
+              onClick={() => navigate("box")}
+            >
+              BOX BLACK <span aria-hidden="true">↗</span>
+            </button>
             <button
               ref={artistEnterRef}
               className="enter-project artist-entry"

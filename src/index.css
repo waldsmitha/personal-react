@@ -34,12 +34,38 @@ button:hover {
 }
 .experience {
   position: relative;
+  isolation: isolate;
   width: 100%;
   height: 100svh;
   min-height: 620px;
   overflow: hidden;
   background: #080808;
 }
+.experience::before,
+.experience::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.experience::before {
+  background: #fff;
+}
+
+.view-globe[data-info="box"]::before,
+.view-globe[data-info="artist"]::after {
+  opacity: 1;
+}
+.view-globe[data-info="box"] .globe-sidebar {
+  color: #080808;
+}
+.view-globe[data-info="box"] .info-heading {
+  color: #585854;
+}
+
 .scene {
   position: absolute;
   inset: 0;
@@ -60,33 +86,52 @@ button:hover {
   animation: gallery-fade-in 1.8s 0.55s both;
 }
 .masthead {
+  /* Do not use mix-blend-mode here. */
   z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: start;
   color: #f5f5f1;
-  mix-blend-mode: difference;
   font-size: 12px;
   line-height: 1.6;
   text-transform: uppercase;
   letter-spacing: 0.045em;
   pointer-events: none;
 }
+
 .identity {
   width: min(42vw, 600px);
-  font:
-    600 clamp(27.5px, 2.25vw, 50px)/1.15 "Barlow Condensed",
-    sans-serif;
-  text-transform: none;
-  letter-spacing: 0;
   opacity: 1;
   transition: opacity 0.4s ease;
 }
-.identity-subheader {
+
+.identity-name {
+  display: block;
   font:
-    600 clamp(18px, 2vw, 22.5px)/1.15 "Barlow Condensed",
+    600 clamp(27.5px, 3.5vw, 50px)/1.15 "Barlow Condensed",
     sans-serif;
+  letter-spacing: 0;
+  background: linear-gradient(130deg, #153127 -2%, #9aff00 -240%, #ff4eab 35%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
+
+.identity-subheader {
+  display: block;
+  font:
+    100 clamp(18px, 2vw, 22.5px)/1.15 "Barlow Condensed",
+    sans-serif;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.view-globe[data-info="box"] .identity-subheader {
+  color: #080808;
+}
+
 .experience:not(.view-globe) .identity {
   opacity: 0;
 }
@@ -133,6 +178,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transition: color 0.65s;
 }
 .profile-navigation {
   display: flex;
@@ -172,8 +218,13 @@ button:hover {
 .info-statement {
   margin: 0;
   font:
-    600 clamp(42px, 4.2vw, 72px)/1.08 "Barlow Condensed",
+    600 30px / 1 "Barlow Condensed",
     sans-serif;
+}
+.info-cube {
+  display: block;
+  width: 100%;
+  height: clamp(140px, 40vh, 360px);
 }
 .info-item {
   padding-bottom: 14px;
@@ -688,7 +739,7 @@ button:hover {
   }
   .identity {
     width: 100%;
-    font-size: 30px;
+    font-size: 40px;
   }
   .edition,
   .globe-caption,
@@ -710,6 +761,9 @@ button:hover {
   .globe-info {
     padding: 12px;
     background: #080808f5;
+  }
+  .view-globe[data-info="box"] .globe-info {
+    background: #fffffff5;
   }
   .enter-project {
     font-size: 24px;
