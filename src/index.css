@@ -730,6 +730,10 @@ button:hover {
   border: 0;
 }
 @media (max-width: 700px) {
+  .identity-subheader {
+    white-space: wrap;
+    max-width: 150px;
+  }
   .experience {
     min-height: 680px;
   }
