@@ -183,20 +183,7 @@ export default function App() {
       className={`experience view-${view} ${ready ? "is-ready" : ""} ${failed ? "has-fallback" : ""}`}
     >
       <canvas ref={canvasRef} className="scene" aria-hidden="true" />
-      <header className="masthead" inert={!ready && !failed}>
-        <div className="identity" aria-hidden={view !== "globe"}>
-          Austin Waldsmith <br />
-          Senior full-stack engineer <br /> with an eye for design.
-        </div>
-        <button
-          className="motion-control"
-          onClick={() => setPaused(!paused)}
-          aria-pressed={paused}
-        >
-          <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
-          {paused ? "Resume motion" : "Pause motion"}
-        </button>
-      </header>
+
       <section
         className="globe-interface"
         aria-label="Austin Waldsmith, full stack engineer and graphic designer"
@@ -211,6 +198,20 @@ export default function App() {
           document viewing platform.
         </p>
         <div className="globe-sidebar">
+          <header className="masthead" inert={!ready && !failed}>
+            <div className="identity" aria-hidden={view !== "globe"}>
+              Austin Waldsmith <br />
+              Senior full-stack engineer <br /> with an eye for design.
+            </div>
+            <button
+              className="motion-control"
+              onClick={() => setPaused(!paused)}
+              aria-pressed={paused}
+            >
+              <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
+              {paused ? "Resume motion" : "Pause motion"}
+            </button>
+          </header>
           <AnimatePresence mode="wait">
             {info && (
               <GlobeInfo
@@ -222,6 +223,7 @@ export default function App() {
               />
             )}
           </AnimatePresence>
+
           <div className="project-entry">
             <button
               ref={enterRef}
@@ -279,13 +281,23 @@ export default function App() {
         aria-labelledby="box-title"
         inert={view !== "box"}
       >
-        <button
-          ref={returnRef}
-          className="back-button"
-          onClick={() => navigate("globe")}
-        >
-          <span aria-hidden="true">↖</span> Back
-        </button>
+        <div className="box-header">
+          <button
+            ref={returnRef}
+            className="back-button"
+            onClick={() => navigate("globe")}
+          >
+            <span aria-hidden="true">↖</span> Back
+          </button>
+          <button
+            className="motion-control"
+            onClick={() => setPaused(!paused)}
+            aria-pressed={paused}
+          >
+            <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
+            {paused ? "Resume motion" : "Pause motion"}
+          </button>
+        </div>
         <h2 id="box-title" className="box-title">
           BOX BLACK
         </h2>

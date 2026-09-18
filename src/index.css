@@ -60,11 +60,7 @@ button:hover {
   animation: gallery-fade-in 1.8s 0.55s both;
 }
 .masthead {
-  position: absolute;
   z-index: 5;
-  top: 34px;
-  left: 36px;
-  right: 36px;
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -101,6 +97,8 @@ button:hover {
   min-height: 32px;
   pointer-events: auto;
   margin-left: auto;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
 }
 .motion-control > span {
   font-size: 19px;
@@ -124,10 +122,8 @@ button:hover {
   transition-delay: 0s;
 }
 .globe-sidebar {
-  position: absolute;
-  top: 175px;
-  bottom: 36px;
-  left: 36px;
+  padding: 36px;
+  height: 100%;
   width: min(42vw, 640px);
   display: flex;
   flex-direction: column;
@@ -246,29 +242,25 @@ button:hover {
   transition-delay: 0s;
 }
 .back-button {
-  position: absolute;
-  top: 125px;
-  left: 36px;
+  padding: 12px 18px;
   display: flex;
   gap: 12px;
   align-items: center;
   font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease-in-out;
 }
-.project-number {
-  position: absolute;
-  right: 36px;
-  top: 132px;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.view-box .back-button,
-.view-box .project-number {
+.back-button:hover {
+  background: #080808;
+  color: #fff;
   opacity: 1;
-  transition-delay: 1.7s;
 }
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 36px;
+}
+
 .box-title {
   position: absolute;
   top: 28%;
@@ -686,9 +678,6 @@ button:hover {
     min-height: 680px;
   }
   .masthead {
-    top: 22px;
-    left: 22px;
-    right: 22px;
     flex-wrap: wrap;
     row-gap: 14px;
   }
@@ -720,10 +709,7 @@ button:hover {
   .enter-project {
     font-size: 24px;
   }
-  .back-button {
-    top: 105px;
-    left: 22px;
-  }
+
   .gallery-navigation {
     top: 120px;
     left: 22px;
