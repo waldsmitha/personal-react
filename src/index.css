@@ -82,6 +82,11 @@ button:hover {
   opacity: 1;
   transition: opacity 0.4s ease;
 }
+.identity-subheader {
+  font:
+    600 clamp(18px, 2vw, 22.5px)/1.15 "Barlow Condensed",
+    sans-serif;
+}
 .experience:not(.view-globe) .identity {
   opacity: 0;
 }

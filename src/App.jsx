@@ -201,7 +201,9 @@ export default function App() {
           <header className="masthead" inert={!ready && !failed}>
             <div className="identity" aria-hidden={view !== "globe"}>
               Austin Waldsmith <br />
-              Senior full-stack engineer <br /> with an eye for design.
+              <span className="identity-subheader">
+                Senior full-stack engineer with an eye for design.
+              </span>
             </div>
             <button
               className="motion-control"

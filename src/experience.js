@@ -9,55 +9,56 @@ const smooth = (a, b, value) => {
 const ease = (t) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
 const bands = [
   {
-    text: "Austin Waldsmith *** ",
+    text: "Austin Waldsmith * ",
     size: 65,
     serif: true,
     repeats: 6,
   },
-  { text: "ENGINEER *** GRAPHIC DESIGN *** ", size: 82 },
+  { text: "ENGINEER * GRAPHIC DESIGN * ", size: 82 },
   {
-    text: "AUSTIN WALDSMITH *** ",
+    text: "Austin Waldsmith * ",
     size: 92,
     repeats: 6,
   },
   {
-    text: "AWS * GCP * DOCKER * KUBERNETES * ",
-    size: 64,
-    serif: true,
-  },
-  {
     text: "Experience: Morgan Stanley * Rodo * Cario * Seasoft * ",
-    size: 84,
+    size: 72,
     info: "experience",
   },
   {
-    text: "Skills: REACT * NEXT.JS * TYPESCRIPT * NODE.JS * PYTHON * POSTGRESQL * ",
+    text: "Skills: AWS * GCP * Docker * Kubernetes * ",
+    size: 84,
+    serif: true,
+    info: "skills",
+  },
+  {
+    text: "React * Next.js * TypeScript * Node.js * Python * PostgreSQL * ",
     size: 84,
     info: "skills",
   },
   {
-    text: "BOX BLACK ** ",
+    text: "Box Black * ",
     size: 84,
     action: "box",
     info: "box",
   },
   {
-    text: "Graphic Design ** ",
+    text: "Graphic Design * ",
     size: 72,
     serif: true,
     action: "artist",
     info: "artist",
   },
   {
-    text: "UI/UX * FIGMA * ACCESSIBILITY * RESPONSIVE DESIGN * ",
+    text: "UI/UX * Figma * Accessibility * Responsive Design * ",
     size: 75,
   },
   {
-    text: "AUSTIN WALDSMITH *** ",
+    text: "AUSTIN WALDSMITH * ",
     size: 92,
     repeats: 6,
   },
-  { text: "ENGINEER *** GRAPHIC DESIGN *** ", size: 48 },
+  { text: "Engineer * Graphic Design * ", size: 48 },
 ].map((band, index, all) => ({
   ...band,
   top: 0.05 + (0.92 * index) / all.length,
@@ -83,7 +84,7 @@ function globeTexture(renderer) {
     const height = (band.bottom - band.top) * 2048;
     ctx.fillRect(0, y, 4096, 7);
     ctx.fillRect(0, y + height - 7, 4096, 7);
-    ctx.font = `${band.serif ? 700 : 600} ${band.size}px "${band.serif ? "Libre Baskerville" : "Barlow Condensed"}"`;
+    ctx.font = ` 600 ${band.size}px "Barlow Condensed"`;
     const width = ctx.measureText(band.text).width;
     const repeats = band.repeats ?? Math.max(1, Math.round(4096 / width));
     const tile = 4096 / repeats;
