@@ -124,7 +124,7 @@ button:hover {
 .globe-sidebar {
   padding: 36px;
   height: 100%;
-  width: min(42vw, 640px);
+  width: min(42vw, 650px);
   display: flex;
   flex-direction: column;
   gap: 16px;
