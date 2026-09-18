@@ -367,12 +367,7 @@ export function createExperience(
     cube.position.y = 0.12 + (paused ? 0 : Math.sin(activeTime * 0.55) * 0.07);
     scene.background =
       progress > 0
-        ? background
-            .copy(black)
-            .lerp(
-              white,
-              destination === "box" ? 1 : smooth(0.18, 0.54, progress),
-            )
+        ? background.copy(black).lerp(white, smooth(0.18, 0.54, progress))
         : null;
     renderer.render(scene, camera);
 

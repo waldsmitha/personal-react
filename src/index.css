@@ -34,36 +34,11 @@ button:hover {
 }
 .experience {
   position: relative;
-  isolation: isolate;
   width: 100%;
   height: 100svh;
   min-height: 620px;
   overflow: hidden;
   background: #080808;
-}
-.experience::before,
-.experience::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.9s ease;
-}
-.experience::before {
-  background: #fff;
-}
-
-.view-globe[data-info="box"]::before,
-.view-globe[data-info="artist"]::after {
-  opacity: 1;
-}
-.view-globe[data-info="box"] .globe-sidebar {
-  color: #080808;
-}
-.view-globe[data-info="box"] .info-heading {
-  color: #585854;
 }
 
 .scene {
@@ -765,9 +740,6 @@ button:hover {
   .globe-info {
     padding: 12px;
     background: #080808f5;
-  }
-  .view-globe[data-info="box"] .globe-info {
-    background: #fffffff5;
   }
   .enter-project {
     font-size: 24px;
